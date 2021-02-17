@@ -1,3 +1,3 @@
-## Ecommerce app
+## Smart Condominium
 
-Aplicativo criado como template de uma aplciação ecommerce.
+Aplicativo criado como template de uma aplicação de gerenciamento de condominios.

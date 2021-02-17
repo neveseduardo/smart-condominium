@@ -7252,7 +7252,7 @@ __webpack_require__.r(__webpack_exports__);
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_views_AuthAdmin_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/views/AuthAdmin/Login.vue */ "./resources/js/views/AuthAdmin/Login.vue"));
     },
-    name: 'UserLogin',
+    name: 'AdminLogin',
     meta: {
       auth: true,
       role: 'admin',

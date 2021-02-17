@@ -56,6 +56,9 @@ export default {
             this.formData.city = '';
         },
     },
+	mounted(){
+		
+	}
 };
 </script>
 

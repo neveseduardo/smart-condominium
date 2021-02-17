@@ -8,7 +8,7 @@ export default {
 		{
 			path: 'login',
 			component: () => import('@/views/AuthAdmin/Login.vue'),
-			name: 'UserLogin',
+			name: 'AdminLogin',
 			meta: { auth: true, role: 'admin', title: 'AdminLogin' },
 		},
 	],

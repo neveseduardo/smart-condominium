@@ -247,7 +247,8 @@ __webpack_require__.r(__webpack_exports__);
     clearCity: function clearCity() {
       this.formData.city = '';
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
