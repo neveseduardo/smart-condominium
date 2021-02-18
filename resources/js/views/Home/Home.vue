@@ -1,6 +1,39 @@
 <template>
     <div>
         <h1>Página inicial</h1>
+
+        <el-form
+            ref="loginForm"
+            :model="form"
+            :rules="formRules"
+            class="login-form"
+            auto-complete="off"
+            label-position="left"
+        >
+            <el-form-item prop="name">
+                <label>Nome</label>
+                <el-input v-model="form.name" placeholder="Nome">
+                    <i slot="prefix" class="el-input__icon el-icon-user"></i>
+                </el-input>
+            </el-form-item>
+            <el-form-item prop="email">
+                <label>Email</label>
+                <el-input v-model="form.email" placeholder="E-mail">
+                    <i slot="prefix" class="el-input__icon el-icon-user"></i>
+                </el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button
+                    :loading="loading"
+                    type="primary"
+                    style="width: 100%"
+                    icon="el-icon-right"
+                    @click.native.prevent="submitForm"
+                    :disabled="loading"
+                    >ENTRAR</el-button
+                >
+            </el-form-item>
+        </el-form>
     </div>
 </template>
 
@@ -22,20 +55,82 @@ export default {
     },
     data: () => {
         return {
+            loading: false,
+            form: {
+                name: '',
+                email: '',
+            },
+            formRules: {
+                name: [
+                    {
+                        required: true,
+                        trigger: 'blur',
+                        validator: (rule, value, callback) => {
+                            const re = /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/;
+                            if (value === '') {
+                                callback(new Error('Digite um nome válido.'));
+                            } else if (!re.test(value)) {
+                                callback(
+                                    new Error('Formato de nome inválido.')
+                                );
+                            } else {
+                                callback();
+                            }
+                        },
+                    },
+                ],
+                email: [
+                    {
+                        required: true,
+                        trigger: 'blur',
+                        validator: (rule, value, callback) => {
+                            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                            if (value === '') {
+                                callback(new Error('Digite um email.'));
+                            } else if (!re.test(value)) {
+                                callback(new Error('Digite um e-mail válido.'));
+                            } else {
+                                callback();
+                            }
+                        },
+                    },
+                ],
+            },
             data: products,
             categories: categories,
-			bestselers: products.slice(0, 4),
-			inHigh: products.slice(0,3),
-			recents: products.slice(0,3),
+            bestselers: products.slice(0, 4),
+            inHigh: products.slice(0, 3),
+            recents: products.slice(0, 3),
             formData: {
                 cityInput: '',
                 city: '',
             },
             input3: '',
             select: [],
+            tableColumns: [
+                { prop: 'title', minWidth: '200', label: 'Título' },
+                { prop: 'value', minWidth: '200', label: 'Valor' },
+            ],
         };
     },
     methods: {
+        submitForm() {
+            this.$refs.loginForm.validate(async (valid) => {
+                if (valid) {
+                    this.loading = true;
+
+                    setTimeout(() => {
+                        this.loading = false;
+                    }, 5000);
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+        onClick(props) {
+            console.log(props);
+        },
         onSubmit() {
             console.log('submeteu');
         },
@@ -56,9 +151,12 @@ export default {
             this.formData.city = '';
         },
     },
-	mounted(){
-		
-	}
+    mounted() {
+        const { data } = this;
+        data.map((item, index) => {
+            item.value = `R$ ${item.value}`;
+        });
+    },
 };
 </script>
 
@@ -71,8 +169,8 @@ export default {
     font-family: 'Secular One', sans-serif;
     font-size: 2.1rem !important;
 }
-.section-title h5{
-	color: #666;
+.section-title h5 {
+    color: #666;
 }
 .section-button {
     padding: 2rem 0;

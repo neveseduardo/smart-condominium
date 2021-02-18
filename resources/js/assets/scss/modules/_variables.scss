@@ -1,0 +1,63 @@
+@import '_colors';
+
+$white-color:                  	rgba(#FFFFFF, .96);
+$black-color: 					rgba(#2c2c2c, .98);
+$transparent-color:          transparent !default;
+
+$primary-color:                	rgba(#34ACDC, .98);
+$default-color:                	rgba(#7C7C7C, .98);
+$info-color:                   	rgba(#5BCAFF, .98);
+$success-color:                	rgba(#4CD964, .98);
+$warning-color:                	rgba(#FF9500, .98);
+$danger-color:                 	rgba(#FF4C40, .98);
+$purple-color:                  rgba(#c178c1, .98);
+$brown-color:                  	rgba(#dcb285, .98);
+
+$primary-color-lighten:         lighten($primary-color, 7%) !default;
+$default-color-lighten:         lighten($default-color, 7%) !default;
+$info-color-lighten:            lighten($info-color, 7%) !default;
+$success-color-lighten:         lighten($success-color, 7%) !default;
+$warning-color-lighten:         lighten($warning-color, 7%) !default;
+$danger-color-lighten:          lighten($danger-color, 7%) !default;
+$brown-color-lighten:           lighten($brown-color, 7%) !default;
+$purple-color-lighten:          lighten($purple-color, 7%) !default;
+
+$primary-color-darken:          darken($primary-color, 10%) !default;
+$default-color-darken:          darken($default-color, 10%) !default;
+$info-color-darken:             darken($info-color, 10%) !default;
+$success-color-darken:          darken($success-color, 10%) !default;
+$warning-color-darken:          darken($warning-color, 10%) !default;
+$danger-color-darken:           darken($danger-color, 10%) !default;
+$brown-color-darken:            darken($brown-color, 10%) !default;
+$purple-color-darken:           darken($purple-color, 10%) !default;
+
+$primary-color-opacity:      	rgba($primary-color, .3) !default;
+$default-color-opacity:      	rgba($default-color, .3) !default;
+$success-color-opacity:      	rgba($success-color, .3) !default;
+$info-color-opacity:         	rgba($info-color, .3) !default;
+$warning-color-opacity:      	rgba($warning-color, .3) !default;
+$danger-color-opacity:       	rgba($danger-color, .3) !default;
+
+// Social icons color
+$social-twitter:             	rgba(#55acee, .98);
+$social-twitter-state-color: 	lighten($social-twitter, 6%) !default;
+$social-facebook: 			 	rgba(#3b5998, .98);
+$social-facebook-state-color:  	lighten($social-facebook, 6%) !default;
+$social-google: 			 	rgba(#dd4b39, .98);
+$social-google-state-color:    	lighten($social-google, 6%) !default;
+$social-linkedin: 			 	rgba(#0077B5, .98);
+$social-linkedin-state-color:  	lighten($social-linkedin, 6%) !default;
+$social-pinterest: 			    rgba(#cc2127, .98);
+$social-pinterest-state-color: 	lighten($social-pinterest, 6%) !default;
+$social-github: 		     	rgba(#333333, .98);
+$social-github-state-color:    	lighten($social-github, 6%) !default;
+$social-youtube: 		    	rgba(#e52d27, .98);
+$social-youtube-state-color:   	lighten($social-youtube, 6%) !default;
+$social-instagram: 		      	rgba(#125688, .98);
+$social-instagram-state-color: 	lighten($social-instagram, 6%) !default;
+
+$border-radius-small:           3px !default;
+$border-radius-base:            4px !default;
+$border-radius-large:           6px !default;
+$border-radius-x-large:         8px !default;
+$border-radius-extreme:         12px !default;

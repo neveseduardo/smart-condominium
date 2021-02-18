@@ -1,0 +1,43 @@
+@import '_variables';
+table.el-table,
+table.el-table,
+.el-table--border {
+	border-top: 0 solid transparent !important;
+	border-left: 0 solid transparent !important;
+	border-right: 0 solid transparent !important;
+	border-bottom: 0 solid transparent !important;
+	border: 0 solid transparent !important;
+}
+.el-table--border td,
+.el-table--border th{
+	border-top: 1px solid #ccc !important;
+	border-right: 0 solid transparent !important;
+	border-left: 0 solid transparent !important;
+	border-bottom: 0 solid transparent !important;
+}
+.el-table--border tr:nth-of-type(odd){
+	background-color: rgba(225, 225, 225, .4);
+}
+.el-table--border th{
+	line-height: 45px !important;
+}
+.el-table--border::after{ width: 0 !important;}
+.el-table td div{
+	word-break: break-word !important;
+}
+.el-table__header th div.cell{
+	text-transform: uppercase;
+	font-weight: bold;
+	color: $black-color;
+}
+.el-table__header th.is-sortable div.cell span{
+	display: inline-block;
+}
+.el-table th.td-actions .cell {
+	text-align: center;
+}
+.el-table td.td-actions .cell {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

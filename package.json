@@ -10,9 +10,8 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21.1",
-        "bootstrap": "^4.6.0",
-        "jquery": "^3.2",
+        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.13",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.16",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
@@ -25,14 +24,13 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.13",
-        "@babel/plugin-proposal-optional-chaining": "^7.12.16",
+        "axios": "^0.21.1",
+        "bootstrap": "^4.6.0",
         "element-ui": "^2.15.0",
+        "jquery": "^3.5.1",
         "moment": "^2.29.1",
-        "npm": "^7.5.2",
         "nprogress": "^0.2.0",
         "perfect-scrollbar": "0.7.1",
-        "vue-carousel": "^0.18.0",
         "vue-router": "^3.5.1",
         "vuex": "^3.6.2"
     }
