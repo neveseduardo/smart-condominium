@@ -1,7 +1,7 @@
 <template>
     <div class="auth-content">
         <div class="card card-body">
-			<i class="fa fa-user"></i>
+            <i class="fa fa-user auth-icon"></i>
             <h1>Área do gerente</h1>
 
             <el-form
@@ -38,6 +38,10 @@
 
                 <el-form-item>
                     <button class="btn btn-primary round btn-block">
+                        <i
+                            class="fa"
+                            :class="loading ? 'fa-spin fa-spinner' : 'fa-lock'"
+                        ></i>
                         Entrar
                     </button>
                 </el-form-item>
@@ -47,12 +51,17 @@
 </template>
 
 <script>
+import Nprogress from 'nprogress';
+import http from '@/http';
+import { logInAdmin } from '@/services/authentication';
+
 export default {
     data() {
         return {
+            loading: false,
             form: {
-                email: '',
-                password: '',
+                email: 'admin@example.com',
+                password: 'password',
             },
             rules: {
                 email: [
@@ -96,9 +105,22 @@ export default {
     },
     methods: {
         submitForm() {
-            this.$refs.loginForm.validate((valid) => {
+            this.$refs.loginForm.validate(async (valid) => {
                 if (valid) {
-                    alert('submit!');
+                    Nprogress.start();
+                    this.loading = true;
+                    const { adminLogin } = http.authentication;
+
+                    try {
+                        const req = await adminLogin(this.form);
+                        const admin = req.object;
+                        logInAdmin(admin);
+                        this.redirect(this.$router, 'AdminDashboard');
+                    } catch (error) {
+                        console.log(error);
+                    }
+                    Nprogress.done();
+                    this.loading = false;
                 } else {
                     console.log('error submit!!');
                     return false;

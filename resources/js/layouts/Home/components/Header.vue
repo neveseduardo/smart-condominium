@@ -2,12 +2,23 @@
     <header class="home-header">
         <h1>
             <i
+                title="Menu"
                 @click="toggle"
                 class="fa"
                 :class="active ? 'fa-times' : 'fa-bars'"
-            ></i
-            >SMART CONDOMINIUM
+            ></i>
+            <span class="screen-large">SMART CONDOMINIUM</span>
+            <span class="screen-small">SMART COND.</span>
         </h1>
+
+        <div>
+            <a
+                title="Área do usuário"
+                @click.prevent="redirect($router, 'UserDashboard')"
+                class="btn btn-info circle"
+                ><i class="fa fa-user"></i
+            ></a>
+        </div>
 
         <transition name="dropdown-content">
             <nav v-if="active" v-on-clickaway="away">

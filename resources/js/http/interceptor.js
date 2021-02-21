@@ -1,8 +1,10 @@
 import axios from 'axios'
 import env from '@/environments'
 import {
-    isLogged,
-    logout
+    outAdmin,
+    getAdmin,
+    outUser,
+    getUser,
 } from '@/services/authentication'
 import {
     Message
@@ -14,11 +16,30 @@ const http = axios.create({
     timeout: 60000
 })
 
-http.interceptors.request.use(config => {
-    const user = isLogged()
-    if (user !== null) {
-        config.headers['Authorization'] = `Bearer ${user.token}`
+
+
+http.interceptors.request.use(async config => {
+    let {
+        url
+    } = config
+
+    if (!url.includes('/auth')) {
+        if (url.includes('/admin')) {
+            const adminToken = await getAdmin()
+            if (adminToken !== undefined && adminToken !== null) {
+                config.headers['Authorization'] = `Bearer ${adminToken.token}`
+            }
+
+        }
+        if (url.includes('/user')) {
+            const userToken = await getUser()
+            if (userToken !== undefined && userToken !== null) {
+                config.headers['Authorization'] = `Bearer ${userToken.token}`
+            }
+        }
     }
+
+    console.log(config)
     return config
 }, error => {
     console.log(error)
@@ -30,27 +51,20 @@ http.interceptors.response.use(res => {
         method
     } = res.config
 
-    if (method === 'post' && process.env.NODE_ENV === 'production') {
+    if (method === 'post') {
         console.log(res)
     }
-    return res
+    return res.data
 }, error => {
     const {
         response
-	} = error
-	
-	console.log('error', error)
-
-    if (response === undefined) {
+    } = error
+    console.log(error)
+    if (!response) {
         return throwError(messages.serverErrorMessage)
     }
-    const user = isLogged()
-    if (parseInt(response.status) === 401 && user !== undefined) {
-		logout()
-		window.location.href = '/#/auth/login'
-    }
-    throwError(error.response.data.message)
-    console.log(error.response)
+    throwError(error?.response?.data?.message)
+    console.error('Erro na requisição: ', error?.response)
     return Promise.reject(error)
 })
 

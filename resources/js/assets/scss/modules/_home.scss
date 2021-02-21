@@ -23,7 +23,7 @@
 
         ul {
             background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(#323232,.3);
+            box-shadow: 0 2px 10px rgba(#323232, .3);
             border: 1px solid #dedede;
             border-radius: 10px;
             list-style-type: none;
@@ -87,8 +87,30 @@
             margin-right: 10px;
             cursor: pointer;
         }
+
+        span.screen-large {
+            display: none;
+        }
+
+		@media screen and (min-width: 960px) {
+			span.screen-large {
+				display: block !important;
+			}
+
+			span.screen-small {
+				display: none !important;
+			}
+		}
+
+
+    }
+
+    a.btn.circle {
+        margin: 10px 0;
     }
 }
+
+
 
 .home-content {
     background-color: #ffffff;
@@ -103,11 +125,11 @@
         padding: 100px 5%;
         color: $white_color;
 
-		h1 {
-			text-transform: uppercase;
-			font-weight: bold;
-			font-size: 2.5rem;
-		}
+        h1 {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
 
     }
 

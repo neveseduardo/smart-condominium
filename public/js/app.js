@@ -5075,6 +5075,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Header',
@@ -5771,9 +5782,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ initProgress)
 /* harmony export */ });
-/* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nprogress */ "./node_modules/nprogress/nprogress.js");
-/* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(nprogress__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _services_authentication__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/authentication */ "./resources/js/services/authentication.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! nprogress */ "./node_modules/nprogress/nprogress.js");
+/* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nprogress__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_authentication__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/services/authentication */ "./resources/js/services/authentication.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 var routeResolved = false;
@@ -5782,45 +5801,88 @@ function tryInitProgress() {
   routeResolved = false;
   setTimeout(function () {
     if (!routeResolved) {
-      nprogress__WEBPACK_IMPORTED_MODULE_0___default().start();
+      nprogress__WEBPACK_IMPORTED_MODULE_1___default().start();
     }
-  }, 100);
+  }, 200);
 }
 
 function initProgress(router) {
-  router.beforeEach(function (to, from, next) {
-    tryInitProgress();
-    var usuario = (0,_services_authentication__WEBPACK_IMPORTED_MODULE_1__.isLogged)();
+  router.beforeEach( /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(to, from, next) {
+      var user, admin;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              tryInitProgress();
+              _context.next = 3;
+              return (0,_services_authentication__WEBPACK_IMPORTED_MODULE_2__.getUser)();
 
-    if (usuario === null && to.meta.auth && to.meta.role === 'admin') {
-      return next({
-        name: 'AdminLogin'
-      });
-    }
+            case 3:
+              user = _context.sent;
+              _context.next = 6;
+              return (0,_services_authentication__WEBPACK_IMPORTED_MODULE_2__.getAdmin)();
 
-    if (usuario === null && to.meta.auth && to.meta.role === 'user') {
-      return next({
-        name: 'UserLogin'
-      });
-    }
+            case 6:
+              admin = _context.sent;
 
-    if (usuario !== null && to.meta.role === 'admin' && to.name === 'AdminLogin') {
-      return next({
-        name: 'AdminDashbord'
-      });
-    }
+              if (!(admin === null && to.meta.auth && to.meta.role === 'admin')) {
+                _context.next = 9;
+                break;
+              }
 
-    if (usuario !== null && to.meta.role === 'user' && to.name === 'UserLogin') {
-      return next({
-        name: 'UserDashbord'
-      });
-    }
+              return _context.abrupt("return", next({
+                name: 'AdminLogin'
+              }));
 
-    return next();
-  });
+            case 9:
+              if (!(user === null && to.meta.auth && to.meta.role === 'user')) {
+                _context.next = 11;
+                break;
+              }
+
+              return _context.abrupt("return", next({
+                name: 'UserLogin'
+              }));
+
+            case 11:
+              if (!(admin !== null && to.meta.role === 'admin' && to.name === 'AdminLogin')) {
+                _context.next = 13;
+                break;
+              }
+
+              return _context.abrupt("return", next({
+                name: 'AdminDashbord'
+              }));
+
+            case 13:
+              if (!(user !== null && to.meta.role === 'user' && to.name === 'UserLogin')) {
+                _context.next = 15;
+                break;
+              }
+
+              return _context.abrupt("return", next({
+                name: 'UserDashbord'
+              }));
+
+            case 15:
+              return _context.abrupt("return", next());
+
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function (_x, _x2, _x3) {
+      return _ref.apply(this, arguments);
+    };
+  }());
   router.afterEach(function () {
     routeResolved = true;
-    nprogress__WEBPACK_IMPORTED_MODULE_0___default().done();
+    nprogress__WEBPACK_IMPORTED_MODULE_1___default().done();
   });
 }
 
@@ -6120,19 +6182,59 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isLogged": () => (/* binding */ isLogged),
-/* harmony export */   "logout": () => (/* binding */ logout),
-/* harmony export */   "login": () => (/* binding */ login)
+/* harmony export */   "getUser": () => (/* binding */ getUser),
+/* harmony export */   "getAdmin": () => (/* binding */ getAdmin),
+/* harmony export */   "outUser": () => (/* binding */ outUser),
+/* harmony export */   "outAdmin": () => (/* binding */ outAdmin),
+/* harmony export */   "logInUser": () => (/* binding */ logInUser),
+/* harmony export */   "logInAdmin": () => (/* binding */ logInAdmin)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 var USER_KEY = 'USER_KEY';
-function isLogged() {
-  return JSON.parse(localStorage.getItem(USER_KEY));
+var ADMIN_KEY = 'ADMIN_KEY';
+function getUser() {
+  return _getUser.apply(this, arguments);
 }
-function logout() {
+
+function _getUser() {
+  _getUser = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            return _context.abrupt("return", JSON.parse(localStorage.getItem(USER_KEY)));
+
+          case 1:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _getUser.apply(this, arguments);
+}
+
+function getAdmin() {
+  return JSON.parse(localStorage.getItem(ADMIN_KEY));
+}
+function outUser() {
   return localStorage.removeItem(USER_KEY);
 }
-function login(user) {
+function outAdmin() {
+  return localStorage.removeItem(ADMIN_KEY);
+}
+function logInUser(user) {
   return localStorage.setItem(USER_KEY, JSON.stringify(user));
+}
+function logInAdmin(admin) {
+  return localStorage.setItem(ADMIN_KEY, JSON.stringify(admin));
 }
 
 /***/ }),
@@ -12592,7 +12694,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".fade-enter-active,\n.fade-leave-active {\n  transition: opacity 0.5s;\n}\n\n.fade-enter,\n.fade-leave-to {\n  opacity: 0;\n}\n\n.dropdown-content-enter-active,\n.dropdown-content-leave-active {\n  transition: all 0.2s;\n}\n\n.dropdown-content-enter,\n.dropdown-content-leave-to {\n  opacity: 0;\n  transform: translateY(-5px);\n}\n\nbutton,\nbutton.btn,\na.btn {\n  display: inline-block;\n  font-weight: 400;\n  color: rgba(255, 255, 255, 0.98);\n  text-align: center;\n  vertical-align: middle;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background-color: rgba(124, 124, 124, 0.98);\n  border: 1px solid transparent;\n  padding: 7px 20px;\n  text-transform: uppercase;\n  font-weight: 600;\n  font-size: 0.8rem;\n  line-height: 1.5;\n  border-radius: 0.25rem;\n  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n}\nbutton i,\nbutton.btn i,\na.btn i {\n  margin-right: 10px;\n}\n\nbutton.round,\nbutton.btn.round,\na.btn.round {\n  border-radius: 30px;\n}\n\nbutton.circle,\nbutton.btn.circle,\na.btn.circle {\n  border-radius: 30px;\n  padding: 0;\n  text-align: center;\n  width: 35px;\n  height: 35px;\n  line-height: 33px;\n  margin-right: 5px;\n}\nbutton.circle i,\nbutton.btn.circle i,\na.btn.circle i {\n  margin: 0;\n  margin-right: 0;\n  font-size: 0.9rem;\n}\n\n.btn:hover,\nbutton:hover {\n  color: rgba(255, 255, 255, 0.98);\n  text-decoration: none;\n  background-color: rgba(99, 99, 99, 0.98);\n}\n\nbutton.btn:focus,\na.btn:focus,\nbutton:focus,\nbutton.focus {\n  outline: 0;\n  box-shadow: 0 0 0 0.2rem rgba(124, 124, 124, 0.25) !important;\n}\n\nbutton.disabled,\n.btn.disabled,\n.btn:disabled,\nbutton:disabled {\n  opacity: 0.65;\n}\n\n.btn:not(:disabled):not(.disabled),\nbutton:not(:disabled):not(.disabled) {\n  cursor: pointer;\n}\n\n.btn-primary {\n  color: #fff;\n  background-color: rgba(52, 172, 220, 0.98) !important;\n  border-color: rgba(52, 172, 220, 0.98);\n}\n\n.btn-primary:hover {\n  color: #fff;\n  background-color: rgba(82, 184, 225, 0.98);\n  border-color: rgba(33, 144, 189, 0.98);\n}\n\n.btn-primary:focus,\n.btn-primary.focus {\n  color: #fff;\n  background-color: rgba(82, 184, 225, 0.98) !important;\n  border-color: rgba(33, 144, 189, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(52, 172, 220, 0.3);\n}\n\n.btn-primary.disabled,\n.btn-primary:disabled {\n  color: #fff;\n  background-color: rgba(52, 172, 220, 0.98) !important;\n  border-color: rgba(52, 172, 220, 0.98);\n}\n\n.btn-primary:not(:disabled):not(.disabled):active:focus,\n.btn-primary:not(:disabled):not(.disabled).active:focus,\n.show > .btn-primary.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(52, 172, 220, 0.3);\n}\n\n.btn-default {\n  color: #fff;\n  background-color: rgba(124, 124, 124, 0.98) !important;\n  border-color: rgba(124, 124, 124, 0.98);\n}\n\n.btn-default:hover {\n  color: #fff;\n  background-color: rgba(142, 142, 142, 0.98) !important;\n  border-color: rgba(99, 99, 99, 0.98);\n}\n\n.btn-default:focus,\n.btn-default.focus {\n  color: #fff;\n  background-color: rgba(142, 142, 142, 0.98) !important;\n  border-color: rgba(99, 99, 99, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(124, 124, 124, 0.3);\n}\n\n.btn-default.disabled,\n.btn-default:disabled {\n  color: #fff;\n  background-color: rgba(124, 124, 124, 0.98) !important;\n  border-color: rgba(124, 124, 124, 0.98);\n}\n\n.btn-default:not(:disabled):not(.disabled):active,\n.btn-default:not(:disabled):not(.disabled).active,\n.show > .btn-default.dropdown-toggle {\n  color: #fff;\n  background-color: rgba(99, 99, 99, 0.98) !important;\n  border-color: #4e555b;\n}\n\n.btn-default:not(:disabled):not(.disabled):active:focus,\n.btn-default:not(:disabled):not(.disabled).active:focus,\n.show > .btn-default.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(124, 124, 124, 0.3);\n}\n\n.btn-success {\n  color: #fff;\n  background-color: rgba(76, 217, 100, 0.98) !important;\n  border-color: rgba(76, 217, 100, 0.98);\n}\n\n.btn-success:hover {\n  color: #fff;\n  background-color: rgba(105, 223, 126, 0.98) !important;\n  border-color: rgba(42, 200, 69, 0.98);\n}\n\n.btn-success:focus,\n.btn-success.focus {\n  color: #fff;\n  background-color: rgba(105, 223, 126, 0.98) !important;\n  border-color: rgba(42, 200, 69, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(76, 217, 100, 0.3);\n}\n\n.btn-success.disabled,\n.btn-success:disabled {\n  color: #fff;\n  background-color: rgba(76, 217, 100, 0.98) !important;\n  border-color: rgba(76, 217, 100, 0.98);\n}\n\n.btn-success:not(:disabled):not(.disabled):active:focus,\n.btn-success:not(:disabled):not(.disabled).active:focus,\n.show > .btn-success.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(76, 217, 100, 0.3);\n}\n\n.btn-info {\n  color: #fff;\n  background-color: rgba(91, 202, 255, 0.98) !important;\n  border-color: rgba(91, 202, 255, 0.98);\n}\n\n.btn-info:hover {\n  color: #fff;\n  background-color: rgba(127, 214, 255, 0.98) !important;\n  border-color: rgba(40, 186, 255, 0.98);\n}\n\n.btn-info:focus,\n.btn-info.focus {\n  color: #fff;\n  background-color: rgba(127, 214, 255, 0.98) !important;\n  border-color: rgba(40, 186, 255, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(91, 202, 255, 0.3);\n}\n\n.btn-info.disabled,\n.btn-info:disabled {\n  color: #fff;\n  background-color: rgba(91, 202, 255, 0.98) !important;\n  border-color: rgba(91, 202, 255, 0.98);\n}\n\n.btn-info:not(:disabled):not(.disabled):active:focus,\n.btn-info:not(:disabled):not(.disabled).active:focus,\n.show > .btn-info.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(91, 202, 255, 0.3);\n}\n\n.btn-warning {\n  color: #212529;\n  background-color: rgba(255, 149, 0, 0.98) !important;\n  border-color: rgba(255, 149, 0, 0.98);\n}\n\n.btn-warning:hover {\n  color: #212529;\n  background-color: rgba(255, 164, 36, 0.98) !important;\n  border-color: rgba(204, 119, 0, 0.98);\n}\n\n.btn-warning:focus,\n.btn-warning.focus {\n  color: #212529;\n  background-color: rgba(255, 164, 36, 0.98) !important;\n  border-color: rgba(204, 119, 0, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(255, 149, 0, 0.3);\n}\n\n.btn-warning.disabled,\n.btn-warning:disabled {\n  color: #212529;\n  background-color: rgba(255, 149, 0, 0.98) !important;\n  border-color: rgba(255, 149, 0, 0.98);\n}\n\n.btn-warning:not(:disabled):not(.disabled):active:focus,\n.btn-warning:not(:disabled):not(.disabled).active:focus,\n.show > .btn-warning.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(255, 149, 0, 0.3);\n}\n\n.btn-danger {\n  color: #fff;\n  background-color: rgba(255, 76, 64, 0.98) !important;\n  border-color: rgba(255, 76, 64, 0.98);\n}\n\n.btn-danger:hover {\n  color: #fff;\n  background-color: rgba(255, 109, 100, 0.98) !important;\n  border-color: rgba(255, 28, 13, 0.98);\n}\n\n.btn-danger:focus,\n.btn-danger.focus {\n  color: #fff;\n  background-color: rgba(255, 109, 100, 0.98) !important;\n  border-color: rgba(255, 28, 13, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(255, 76, 64, 0.3);\n}\n\n.btn-danger.disabled,\n.btn-danger:disabled {\n  color: #fff;\n  background-color: rgba(255, 76, 64, 0.98) !important;\n  border-color: rgba(255, 76, 64, 0.98);\n}\n\n.btn-danger:not(:disabled):not(.disabled):active:focus,\n.btn-danger:not(:disabled):not(.disabled).active:focus,\n.show > .btn-danger.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(255, 76, 64, 0.3);\n}\n\n@media all and (min-width: 992px) and (max-width: 1199px) {\n  .btn-lg-block {\n    width: 100% !important;\n    display: block !important;\n  }\n}\n@media all and (min-width: 768px) and (max-width: 991px) {\n  .btn-md-block {\n    width: 100% !important;\n    display: block !important;\n  }\n}\n@media all and (min-width: 576px) and (max-width: 767px) {\n  .btn-sm-block {\n    width: 100% !important;\n    display: block !important;\n  }\n}\n@media all and (max-width: 575px) {\n  .btn-xs-block {\n    width: 100% !important;\n    display: block !important;\n  }\n}\ntable.el-table,\ntable.el-table,\n.el-table--border {\n  border-top: 0 solid transparent !important;\n  border-left: 0 solid transparent !important;\n  border-right: 0 solid transparent !important;\n  border-bottom: 0 solid transparent !important;\n  border: 0 solid transparent !important;\n}\n\n.el-table--border td,\n.el-table--border th {\n  border-top: 1px solid #ccc !important;\n  border-right: 0 solid transparent !important;\n  border-left: 0 solid transparent !important;\n  border-bottom: 0 solid transparent !important;\n}\n\n.el-table--border tr:nth-of-type(odd) {\n  background-color: rgba(225, 225, 225, 0.4);\n}\n\n.el-table--border th {\n  line-height: 45px !important;\n}\n\n.el-table--border::after {\n  width: 0 !important;\n}\n\n.el-table td div {\n  word-break: break-word !important;\n}\n\n.el-table__header th div.cell {\n  text-transform: uppercase;\n  font-weight: bold;\n  color: rgba(44, 44, 44, 0.98);\n}\n\n.el-table__header th.is-sortable div.cell span {\n  display: inline-block;\n}\n\n.el-table th.td-actions .cell {\n  text-align: center;\n}\n\n.el-table td.td-actions .cell {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\nform label {\n  line-height: initial !important;\n  font-weight: bold;\n  color: rgba(124, 124, 124, 0.98) !important;\n}\n\n.el-form-item__label {\n  padding: 0 0 0 0 !important;\n}\n\ninput, textarea {\n  display: block;\n  font-size: inherit !important;\n  transition: all 300ms linear;\n  color: rgba(52, 172, 220, 0.98) !important;\n  background-color: #f4f4f4 !important;\n}\n\n.el-textarea span {\n  background: transparent !important;\n}\n\ntextarea:focus,\ninput:focus {\n  box-shadow: none;\n  outline: none;\n  background-color: rgba(255, 255, 255, 0.96) !important;\n  transition: all 300ms linear;\n  box-shadow: 0 0 0 0.2rem rgba(52, 172, 220, 0.3) !important;\n}\n\n.el-form-item.is-error .el-input__inner,\n.is-invalid textarea,\n.is-invalid input {\n  border-color: rgba(255, 76, 64, 0.98);\n  color: rgba(255, 76, 64, 0.98) !important;\n  background-color: rgba(255, 76, 64, 0.3) !important;\n}\n\n.el-form-item.is-error .el-input__inner:focus,\n.is-invalid textarea:focus,\n.is-invalid input:focus {\n  border-color: rgba(255, 109, 100, 0.98);\n  color: rgba(255, 76, 64, 0.98) !important;\n  background-color: rgba(255, 255, 255, 0.96) !important;\n  box-shadow: 0 0 0 0.2rem rgba(255, 76, 64, 0.3) !important;\n}\n\n.el-form-item.is-error .el-input__inner::-webkit-input-placeholder,\n.is-invalid textarea::-webkit-input-placeholder,\n.is-invalid input::-webkit-input-placeholder {\n  color: rgba(255, 76, 64, 0.98) !important;\n}\n\ninput:focus::-webkit-input-placeholder {\n  color: rgba(52, 172, 220, 0.98) !important;\n}\n\ninput::-webkit-input-placeholder {\n  color: rgba(142, 142, 142, 0.98) !important;\n}\n\n.el-select.el-select--large {\n  width: 100%;\n  display: block;\n}\n\n* {\n  font-family: \"Montserrat\", sans-serif;\n}\n\n.home-header {\n  height: 60px;\n  padding: 0 5%;\n  display: flex;\n  position: fixed;\n  width: 100%;\n  border-bottom: 1px solid #ccc;\n  background-color: #ffffff;\n  z-index: 99999 !important;\n}\n.home-header nav {\n  width: 300px;\n  max-width: calc(100vw - 20px);\n  margin: 20px;\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  top: 60px;\n  left: 0;\n}\n.home-header nav ul {\n  background-color: #ffffff;\n  box-shadow: 0 2px 10px rgba(50, 50, 50, 0.3);\n  border: 1px solid #dedede;\n  border-radius: 10px;\n  list-style-type: none;\n  display: table;\n  padding: 0.5rem 0;\n  margin: 0;\n}\n.home-header nav ul li a {\n  line-height: 60px;\n  display: block;\n  line-height: 60px;\n  padding: 0 2rem;\n  color: #7c7c7c;\n  text-decoration: none;\n  text-transform: uppercase;\n  font-weight: bold;\n  font-size: 0.9rem;\n}\n.home-header nav ul li a:hover {\n  color: rgba(52, 172, 220, 0.98);\n}\n.home-header nav ul li a::after {\n  content: \"\";\n  display: block;\n  width: 0;\n  height: 3px;\n  background: rgba(52, 172, 220, 0.3);\n  transition: width 0.3s;\n}\n.home-header nav ul li:not(:last-child) a:hover:after {\n  width: 100%;\n}\n.home-header h1 {\n  margin-bottom: 0;\n  height: 60px;\n  line-height: 60px;\n  font-size: 1.5rem;\n  flex: 1;\n  font-weight: bold;\n}\n.home-header h1 i {\n  width: 40px;\n  height: 40px;\n  display: flex;\n  margin: 10px 0;\n  border-radius: 50%;\n  line-height: 40px;\n  text-align: center;\n  justify-content: center;\n  float: left;\n  background-color: rgba(52, 172, 220, 0.3);\n  margin-right: 10px;\n  cursor: pointer;\n}\n\n.home-content {\n  background-color: #ffffff;\n  width: 100%;\n  min-height: calc(100vh - 60px);\n  padding-top: 60px;\n}\n.home-content .home-introduction {\n  width: 100%;\n  min-height: calc(100vh - 60px);\n  background-color: rgba(82, 184, 225, 0.98);\n  padding: 100px 5%;\n  color: rgba(255, 255, 255, 0.96);\n}\n.home-content .home-introduction h1 {\n  text-transform: uppercase;\n  font-weight: bold;\n  font-size: 2.5rem;\n}\n@media screen and (min-width: 960px) {\n  .home-content .home-introduction {\n    padding: 100px 2rem !important;\n  }\n}\n\n.home-footer {\n  width: 100%;\n  height: 60px;\n  padding: 0 5%;\n  border-top: 1px solid #ccc;\n}\n.home-footer p:last-of-type {\n  display: flex;\n  margin: 0;\n  justify-content: center;\n  align-items: center;\n  height: 60px;\n}\n\n@media screen and (min-width: 960px) {\n  .home-footer {\n    padding: 0 2rem !important;\n  }\n}\n@media (min-width: 960px) {\n  .home-header {\n    padding: 0 2rem !important;\n  }\n}\n.auth-wrapper {\n  min-height: calc(100vh - 122px);\n}\n\n.auth-header {\n  border-bottom: 1px solid #ccc;\n}\n.auth-header ul {\n  margin: 0;\n  padding: 0;\n  list-style-type: none;\n  display: flex;\n  justify-content: flex-end;\n}\n.auth-header ul li a {\n  display: block;\n  line-height: 60px;\n  padding: 0 1rem;\n  font-size: 1rem;\n}\n\n.auth-content {\n  min-height: calc(100vh - 122px);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 60px 0;\n  background-image: linear-gradient(175deg, #fbfbfb 50%, #f3f3f3 50%);\n}\n.auth-content .card-body {\n  border-radius: 30px;\n  max-width: 300px;\n  position: relative;\n  box-shadow: 0 5px 10px rgba(124, 124, 124, 0.3);\n}\n.auth-content .card-body i {\n  position: absolute;\n  top: -20px;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 40px;\n  height: 40px;\n  line-height: 40px;\n  background-color: rgba(52, 172, 220, 0.98);\n  text-align: center;\n  border-radius: 20px;\n  color: #fff;\n}\n.auth-content .card-body h1 {\n  font-size: 1.7rem;\n  color: rgba(52, 172, 220, 0.98);\n  text-align: center;\n  text-transform: uppercase;\n  padding: 1rem 0;\n}\n\n@media screen and (min-width: 960px) {\n  .auth-content .card-body {\n    max-width: 360px;\n  }\n}\n.auth-footer {\n  border-top: 1px solid #ccc;\n}\n.auth-footer p {\n  height: 60px;\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".fade-enter-active,\n.fade-leave-active {\n  transition: opacity 0.5s;\n}\n\n.fade-enter,\n.fade-leave-to {\n  opacity: 0;\n}\n\n.dropdown-content-enter-active,\n.dropdown-content-leave-active {\n  transition: all 0.2s;\n}\n\n.dropdown-content-enter,\n.dropdown-content-leave-to {\n  opacity: 0;\n  transform: translateY(-5px);\n}\n\nbutton,\nbutton.btn,\na.btn {\n  display: inline-block;\n  font-weight: 400;\n  color: rgba(255, 255, 255, 0.98);\n  text-align: center;\n  vertical-align: middle;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background-color: rgba(124, 124, 124, 0.98);\n  border: 1px solid transparent;\n  padding: 7px 20px;\n  text-transform: uppercase;\n  font-weight: 600;\n  font-size: 0.8rem;\n  line-height: 1.5;\n  border-radius: 0.25rem;\n  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n}\nbutton i,\nbutton.btn i,\na.btn i {\n  margin-right: 10px;\n}\n\nbutton.round,\nbutton.btn.round,\na.btn.round {\n  border-radius: 30px;\n}\n\nbutton.circle,\nbutton.btn.circle,\na.btn.circle {\n  border-radius: 30px;\n  padding: 0;\n  text-align: center;\n  width: 35px;\n  height: 35px;\n  line-height: 33px;\n  margin-right: 5px;\n}\nbutton.circle i,\nbutton.btn.circle i,\na.btn.circle i {\n  margin: 0;\n  margin-right: 0;\n  font-size: 0.9rem;\n}\n\n.btn:hover,\nbutton:hover {\n  color: rgba(255, 255, 255, 0.98);\n  text-decoration: none;\n  background-color: rgba(99, 99, 99, 0.98);\n}\n\nbutton.btn:focus,\na.btn:focus,\nbutton:focus,\nbutton.focus {\n  outline: 0;\n  box-shadow: 0 0 0 0.2rem rgba(124, 124, 124, 0.25) !important;\n}\n\nbutton.disabled,\n.btn.disabled,\n.btn:disabled,\nbutton:disabled {\n  opacity: 0.65;\n}\n\n.btn:not(:disabled):not(.disabled),\nbutton:not(:disabled):not(.disabled) {\n  cursor: pointer;\n}\n\n.btn-primary {\n  color: #fff;\n  background-color: rgba(52, 172, 220, 0.98) !important;\n  border-color: rgba(52, 172, 220, 0.98);\n}\n\n.btn-primary:hover {\n  color: #fff;\n  background-color: rgba(82, 184, 225, 0.98);\n  border-color: rgba(33, 144, 189, 0.98);\n}\n\n.btn-primary:focus,\n.btn-primary.focus {\n  color: #fff;\n  background-color: rgba(82, 184, 225, 0.98) !important;\n  border-color: rgba(33, 144, 189, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(52, 172, 220, 0.3);\n}\n\n.btn-primary.disabled,\n.btn-primary:disabled {\n  color: #fff;\n  background-color: rgba(52, 172, 220, 0.98) !important;\n  border-color: rgba(52, 172, 220, 0.98);\n}\n\n.btn-primary:not(:disabled):not(.disabled):active:focus,\n.btn-primary:not(:disabled):not(.disabled).active:focus,\n.show > .btn-primary.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(52, 172, 220, 0.3);\n}\n\n.btn-default {\n  color: #fff;\n  background-color: rgba(124, 124, 124, 0.98) !important;\n  border-color: rgba(124, 124, 124, 0.98);\n}\n\n.btn-default:hover {\n  color: #fff;\n  background-color: rgba(142, 142, 142, 0.98) !important;\n  border-color: rgba(99, 99, 99, 0.98);\n}\n\n.btn-default:focus,\n.btn-default.focus {\n  color: #fff;\n  background-color: rgba(142, 142, 142, 0.98) !important;\n  border-color: rgba(99, 99, 99, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(124, 124, 124, 0.3);\n}\n\n.btn-default.disabled,\n.btn-default:disabled {\n  color: #fff;\n  background-color: rgba(124, 124, 124, 0.98) !important;\n  border-color: rgba(124, 124, 124, 0.98);\n}\n\n.btn-default:not(:disabled):not(.disabled):active,\n.btn-default:not(:disabled):not(.disabled).active,\n.show > .btn-default.dropdown-toggle {\n  color: #fff;\n  background-color: rgba(99, 99, 99, 0.98) !important;\n  border-color: #4e555b;\n}\n\n.btn-default:not(:disabled):not(.disabled):active:focus,\n.btn-default:not(:disabled):not(.disabled).active:focus,\n.show > .btn-default.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(124, 124, 124, 0.3);\n}\n\n.btn-success {\n  color: #fff;\n  background-color: rgba(76, 217, 100, 0.98) !important;\n  border-color: rgba(76, 217, 100, 0.98);\n}\n\n.btn-success:hover {\n  color: #fff;\n  background-color: rgba(105, 223, 126, 0.98) !important;\n  border-color: rgba(42, 200, 69, 0.98);\n}\n\n.btn-success:focus,\n.btn-success.focus {\n  color: #fff;\n  background-color: rgba(105, 223, 126, 0.98) !important;\n  border-color: rgba(42, 200, 69, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(76, 217, 100, 0.3);\n}\n\n.btn-success.disabled,\n.btn-success:disabled {\n  color: #fff;\n  background-color: rgba(76, 217, 100, 0.98) !important;\n  border-color: rgba(76, 217, 100, 0.98);\n}\n\n.btn-success:not(:disabled):not(.disabled):active:focus,\n.btn-success:not(:disabled):not(.disabled).active:focus,\n.show > .btn-success.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(76, 217, 100, 0.3);\n}\n\n.btn-info {\n  color: #fff;\n  background-color: rgba(91, 202, 255, 0.98) !important;\n  border-color: rgba(91, 202, 255, 0.98);\n}\n\n.btn-info:hover {\n  color: #fff;\n  background-color: rgba(127, 214, 255, 0.98) !important;\n  border-color: rgba(40, 186, 255, 0.98);\n}\n\n.btn-info:focus,\n.btn-info.focus {\n  color: #fff;\n  background-color: rgba(127, 214, 255, 0.98) !important;\n  border-color: rgba(40, 186, 255, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(91, 202, 255, 0.3);\n}\n\n.btn-info.disabled,\n.btn-info:disabled {\n  color: #fff;\n  background-color: rgba(91, 202, 255, 0.98) !important;\n  border-color: rgba(91, 202, 255, 0.98);\n}\n\n.btn-info:not(:disabled):not(.disabled):active:focus,\n.btn-info:not(:disabled):not(.disabled).active:focus,\n.show > .btn-info.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(91, 202, 255, 0.3);\n}\n\n.btn-warning {\n  color: #212529;\n  background-color: rgba(255, 149, 0, 0.98) !important;\n  border-color: rgba(255, 149, 0, 0.98);\n}\n\n.btn-warning:hover {\n  color: #212529;\n  background-color: rgba(255, 164, 36, 0.98) !important;\n  border-color: rgba(204, 119, 0, 0.98);\n}\n\n.btn-warning:focus,\n.btn-warning.focus {\n  color: #212529;\n  background-color: rgba(255, 164, 36, 0.98) !important;\n  border-color: rgba(204, 119, 0, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(255, 149, 0, 0.3);\n}\n\n.btn-warning.disabled,\n.btn-warning:disabled {\n  color: #212529;\n  background-color: rgba(255, 149, 0, 0.98) !important;\n  border-color: rgba(255, 149, 0, 0.98);\n}\n\n.btn-warning:not(:disabled):not(.disabled):active:focus,\n.btn-warning:not(:disabled):not(.disabled).active:focus,\n.show > .btn-warning.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(255, 149, 0, 0.3);\n}\n\n.btn-danger {\n  color: #fff;\n  background-color: rgba(255, 76, 64, 0.98) !important;\n  border-color: rgba(255, 76, 64, 0.98);\n}\n\n.btn-danger:hover {\n  color: #fff;\n  background-color: rgba(255, 109, 100, 0.98) !important;\n  border-color: rgba(255, 28, 13, 0.98);\n}\n\n.btn-danger:focus,\n.btn-danger.focus {\n  color: #fff;\n  background-color: rgba(255, 109, 100, 0.98) !important;\n  border-color: rgba(255, 28, 13, 0.98);\n  box-shadow: 0 0 0 0.2rem rgba(255, 76, 64, 0.3);\n}\n\n.btn-danger.disabled,\n.btn-danger:disabled {\n  color: #fff;\n  background-color: rgba(255, 76, 64, 0.98) !important;\n  border-color: rgba(255, 76, 64, 0.98);\n}\n\n.btn-danger:not(:disabled):not(.disabled):active:focus,\n.btn-danger:not(:disabled):not(.disabled).active:focus,\n.show > .btn-danger.dropdown-toggle:focus {\n  box-shadow: 0 0 0 0.2rem rgba(255, 76, 64, 0.3);\n}\n\n@media all and (min-width: 992px) and (max-width: 1199px) {\n  .btn-lg-block {\n    width: 100% !important;\n    display: block !important;\n  }\n}\n@media all and (min-width: 768px) and (max-width: 991px) {\n  .btn-md-block {\n    width: 100% !important;\n    display: block !important;\n  }\n}\n@media all and (min-width: 576px) and (max-width: 767px) {\n  .btn-sm-block {\n    width: 100% !important;\n    display: block !important;\n  }\n}\n@media all and (max-width: 575px) {\n  .btn-xs-block {\n    width: 100% !important;\n    display: block !important;\n  }\n}\ntable.el-table,\ntable.el-table,\n.el-table--border {\n  border-top: 0 solid transparent !important;\n  border-left: 0 solid transparent !important;\n  border-right: 0 solid transparent !important;\n  border-bottom: 0 solid transparent !important;\n  border: 0 solid transparent !important;\n}\n\n.el-table--border td,\n.el-table--border th {\n  border-top: 1px solid #ccc !important;\n  border-right: 0 solid transparent !important;\n  border-left: 0 solid transparent !important;\n  border-bottom: 0 solid transparent !important;\n}\n\n.el-table--border tr:nth-of-type(odd) {\n  background-color: rgba(225, 225, 225, 0.4);\n}\n\n.el-table--border th {\n  line-height: 45px !important;\n}\n\n.el-table--border::after {\n  width: 0 !important;\n}\n\n.el-table td div {\n  word-break: break-word !important;\n}\n\n.el-table__header th div.cell {\n  text-transform: uppercase;\n  font-weight: bold;\n  color: rgba(44, 44, 44, 0.98);\n}\n\n.el-table__header th.is-sortable div.cell span {\n  display: inline-block;\n}\n\n.el-table th.td-actions .cell {\n  text-align: center;\n}\n\n.el-table td.td-actions .cell {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\nform label {\n  line-height: initial !important;\n  font-weight: bold;\n  color: rgba(124, 124, 124, 0.98) !important;\n}\n\n.el-form-item__label {\n  padding: 0 0 0 0 !important;\n}\n\ninput, textarea {\n  display: block;\n  font-size: inherit !important;\n  transition: all 300ms linear;\n  color: rgba(52, 172, 220, 0.98) !important;\n  background-color: #f4f4f4 !important;\n}\n\n.el-textarea span {\n  background: transparent !important;\n}\n\ntextarea:focus,\ninput:focus {\n  box-shadow: none;\n  outline: none;\n  background-color: rgba(255, 255, 255, 0.96) !important;\n  transition: all 300ms linear;\n  box-shadow: 0 0 0 0.2rem rgba(52, 172, 220, 0.3) !important;\n}\n\n.el-form-item.is-error .el-input__inner,\n.is-invalid textarea,\n.is-invalid input {\n  border-color: rgba(255, 76, 64, 0.98);\n  color: rgba(255, 76, 64, 0.98) !important;\n  background-color: rgba(255, 76, 64, 0.3) !important;\n}\n\n.el-form-item.is-error .el-input__inner:focus,\n.is-invalid textarea:focus,\n.is-invalid input:focus {\n  border-color: rgba(255, 109, 100, 0.98);\n  color: rgba(255, 76, 64, 0.98) !important;\n  background-color: rgba(255, 255, 255, 0.96) !important;\n  box-shadow: 0 0 0 0.2rem rgba(255, 76, 64, 0.3) !important;\n}\n\n.el-form-item.is-error .el-input__inner::-webkit-input-placeholder,\n.is-invalid textarea::-webkit-input-placeholder,\n.is-invalid input::-webkit-input-placeholder {\n  color: rgba(255, 76, 64, 0.98) !important;\n}\n\ninput:focus::-webkit-input-placeholder {\n  color: rgba(52, 172, 220, 0.98) !important;\n}\n\ninput::-webkit-input-placeholder {\n  color: rgba(142, 142, 142, 0.98) !important;\n}\n\n.el-select.el-select--large {\n  width: 100%;\n  display: block;\n}\n\n* {\n  font-family: \"Montserrat\", sans-serif;\n}\n\n.home-header {\n  height: 60px;\n  padding: 0 5%;\n  display: flex;\n  position: fixed;\n  width: 100%;\n  border-bottom: 1px solid #ccc;\n  background-color: #ffffff;\n  z-index: 99999 !important;\n}\n.home-header nav {\n  width: 300px;\n  max-width: calc(100vw - 20px);\n  margin: 20px;\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  top: 60px;\n  left: 0;\n}\n.home-header nav ul {\n  background-color: #ffffff;\n  box-shadow: 0 2px 10px rgba(50, 50, 50, 0.3);\n  border: 1px solid #dedede;\n  border-radius: 10px;\n  list-style-type: none;\n  display: table;\n  padding: 0.5rem 0;\n  margin: 0;\n}\n.home-header nav ul li a {\n  line-height: 60px;\n  display: block;\n  line-height: 60px;\n  padding: 0 2rem;\n  color: #7c7c7c;\n  text-decoration: none;\n  text-transform: uppercase;\n  font-weight: bold;\n  font-size: 0.9rem;\n}\n.home-header nav ul li a:hover {\n  color: rgba(52, 172, 220, 0.98);\n}\n.home-header nav ul li a::after {\n  content: \"\";\n  display: block;\n  width: 0;\n  height: 3px;\n  background: rgba(52, 172, 220, 0.3);\n  transition: width 0.3s;\n}\n.home-header nav ul li:not(:last-child) a:hover:after {\n  width: 100%;\n}\n.home-header h1 {\n  margin-bottom: 0;\n  height: 60px;\n  line-height: 60px;\n  font-size: 1.5rem;\n  flex: 1;\n  font-weight: bold;\n}\n.home-header h1 i {\n  width: 40px;\n  height: 40px;\n  display: flex;\n  margin: 10px 0;\n  border-radius: 50%;\n  line-height: 40px;\n  text-align: center;\n  justify-content: center;\n  float: left;\n  background-color: rgba(52, 172, 220, 0.3);\n  margin-right: 10px;\n  cursor: pointer;\n}\n.home-header h1 span.screen-large {\n  display: none;\n}\n@media screen and (min-width: 960px) {\n  .home-header h1 span.screen-large {\n    display: block !important;\n  }\n  .home-header h1 span.screen-small {\n    display: none !important;\n  }\n}\n.home-header a.btn.circle {\n  margin: 10px 0;\n}\n\n.home-content {\n  background-color: #ffffff;\n  width: 100%;\n  min-height: calc(100vh - 60px);\n  padding-top: 60px;\n}\n.home-content .home-introduction {\n  width: 100%;\n  min-height: calc(100vh - 60px);\n  background-color: rgba(82, 184, 225, 0.98);\n  padding: 100px 5%;\n  color: rgba(255, 255, 255, 0.96);\n}\n.home-content .home-introduction h1 {\n  text-transform: uppercase;\n  font-weight: bold;\n  font-size: 2.5rem;\n}\n@media screen and (min-width: 960px) {\n  .home-content .home-introduction {\n    padding: 100px 2rem !important;\n  }\n}\n\n.home-footer {\n  width: 100%;\n  height: 60px;\n  padding: 0 5%;\n  border-top: 1px solid #ccc;\n}\n.home-footer p:last-of-type {\n  display: flex;\n  margin: 0;\n  justify-content: center;\n  align-items: center;\n  height: 60px;\n}\n\n@media screen and (min-width: 960px) {\n  .home-footer {\n    padding: 0 2rem !important;\n  }\n}\n@media (min-width: 960px) {\n  .home-header {\n    padding: 0 2rem !important;\n  }\n}\n.auth-wrapper {\n  min-height: calc(100vh - 122px);\n}\n\n.auth-header {\n  border-bottom: 1px solid #ccc;\n}\n.auth-header ul {\n  margin: 0;\n  padding: 0;\n  list-style-type: none;\n  display: flex;\n  justify-content: flex-end;\n}\n.auth-header ul li a {\n  display: block;\n  line-height: 60px;\n  padding: 0 1rem;\n  font-size: 1rem;\n}\n\n.auth-content {\n  min-height: calc(100vh - 122px);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 60px 0;\n  background-image: linear-gradient(175deg, #fbfbfb 50%, #f3f3f3 50%);\n}\n.auth-content .card-body {\n  border-radius: 30px;\n  max-width: 300px;\n  position: relative;\n  box-shadow: 0 5px 10px rgba(124, 124, 124, 0.3);\n}\n.auth-content .card-body i.auth-icon {\n  position: absolute;\n  top: -20px;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 40px;\n  height: 40px;\n  line-height: 40px;\n  background-color: rgba(52, 172, 220, 0.98);\n  text-align: center;\n  border-radius: 20px;\n  color: #fff;\n}\n.auth-content .card-body h1 {\n  font-size: 1.7rem;\n  color: rgba(52, 172, 220, 0.98);\n  text-align: center;\n  text-transform: uppercase;\n  padding: 1rem 0;\n}\n\n@media screen and (min-width: 960px) {\n  .auth-content .card-body {\n    max-width: 360px;\n  }\n}\n.auth-footer {\n  border-top: 1px solid #ccc;\n}\n.auth-footer p {\n  height: 60px;\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n}\n\n/* Make clicks pass-through */\n#nprogress {\n  pointer-events: none;\n}\n\n#nprogress .bar {\n  background: rgba(52, 172, 220, 0.98);\n  position: fixed;\n  z-index: 1031;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n}\n\n/* Fancy blur effect */\n#nprogress .peg {\n  display: block;\n  position: absolute;\n  right: 0px;\n  width: 100px;\n  height: 100%;\n  box-shadow: 0 0 10px rgba(52, 172, 220, 0.98), 0 0 5px rgba(52, 172, 220, 0.98);\n  opacity: 1;\n  transform: rotate(3deg) translate(0px, -4px);\n}\n\n/* Remove these to get rid of the spinner */\n#nprogress .spinner {\n  display: block;\n  position: fixed;\n  z-index: 1031;\n  top: 15px;\n  right: 15px;\n}\n\n#nprogress .spinner-icon {\n  width: 18px;\n  height: 18px;\n  box-sizing: border-box;\n  border: solid 2px transparent;\n  border-top-color: rgba(52, 172, 220, 0.98);\n  border-left-color: rgba(52, 172, 220, 0.98);\n  border-radius: 50%;\n  -webkit-animation: nprogress-spinner 400ms linear infinite;\n  animation: nprogress-spinner 400ms linear infinite;\n}\n\n.nprogress-custom-parent {\n  overflow: hidden;\n  position: relative;\n}\n\n.nprogress-custom-parent #nprogress .spinner,\n.nprogress-custom-parent #nprogress .bar {\n  position: absolute;\n}\n\n@-webkit-keyframes nprogress-spinner {\n  0% {\n    -webkit-transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n  }\n}\n@keyframes nprogress-spinner {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -89250,9 +89352,32 @@ var render = function() {
         _c("i", {
           staticClass: "fa",
           class: _vm.active ? "fa-times" : "fa-bars",
+          attrs: { title: "Menu" },
           on: { click: _vm.toggle }
         }),
-        _vm._v("SMART CONDOMINIUM\n    ")
+        _vm._v(" "),
+        _c("span", { staticClass: "screen-large" }, [
+          _vm._v("SMART CONDOMINIUM")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "screen-small" }, [_vm._v("SMART COND.")])
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-info circle",
+            attrs: { title: "Área do usuário" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.redirect(_vm.$router, "UserDashboard")
+              }
+            }
+          },
+          [_c("i", { staticClass: "fa fa-user" })]
+        )
       ]),
       _vm._v(" "),
       _c("transition", { attrs: { name: "dropdown-content" } }, [

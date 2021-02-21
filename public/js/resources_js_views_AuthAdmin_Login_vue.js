@@ -11,6 +11,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! nprogress */ "./node_modules/nprogress/nprogress.js");
+/* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nprogress__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/http */ "./resources/js/http/index.js");
+/* harmony import */ var _services_authentication__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/services/authentication */ "./resources/js/services/authentication.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -59,14 +71,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     var _this = this;
 
     return {
+      loading: false,
       form: {
-        email: '',
-        password: ''
+        email: 'admin@example.com',
+        password: 'password'
       },
       rules: {
         email: [{
@@ -104,16 +124,292 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitForm: function submitForm() {
-      this.$refs.loginForm.validate(function (valid) {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
+      var _this2 = this;
+
+      this.$refs.loginForm.validate( /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(valid) {
+          var adminLogin, req, admin;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  if (!valid) {
+                    _context.next = 20;
+                    break;
+                  }
+
+                  nprogress__WEBPACK_IMPORTED_MODULE_1___default().start();
+                  _this2.loading = true;
+                  adminLogin = _http__WEBPACK_IMPORTED_MODULE_2__.default.authentication.adminLogin;
+                  _context.prev = 4;
+                  _context.next = 7;
+                  return adminLogin(_this2.form);
+
+                case 7:
+                  req = _context.sent;
+                  admin = req.object;
+                  (0,_services_authentication__WEBPACK_IMPORTED_MODULE_3__.logInAdmin)(admin);
+
+                  _this2.redirect(_this2.$router, 'AdminDashboard');
+
+                  _context.next = 16;
+                  break;
+
+                case 13:
+                  _context.prev = 13;
+                  _context.t0 = _context["catch"](4);
+                  console.log(_context.t0);
+
+                case 16:
+                  nprogress__WEBPACK_IMPORTED_MODULE_1___default().done();
+                  _this2.loading = false;
+                  _context.next = 22;
+                  break;
+
+                case 20:
+                  console.log('error submit!!');
+                  return _context.abrupt("return", false);
+
+                case 22:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, null, [[4, 13]]);
+        }));
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }());
     }
   }
+});
+
+/***/ }),
+
+/***/ "./resources/js/environments.js":
+/*!**************************************!*\
+  !*** ./resources/js/environments.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var domain = 'http://localhost:8000/api';
+
+if (false) {}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  domain: domain
+});
+
+/***/ }),
+
+/***/ "./resources/js/http/index.js":
+/*!************************************!*\
+  !*** ./resources/js/http/index.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var modulesFiles = __webpack_require__("./resources/js/http/modules sync recursive \\.js$");
+
+var modules = modulesFiles.keys().reduce(function (modules, modulePath) {
+  var moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1');
+  var value = modulesFiles(modulePath);
+  modules[moduleName] = value["default"];
+  return modules;
+}, {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modules);
+
+/***/ }),
+
+/***/ "./resources/js/http/interceptor.js":
+/*!******************************************!*\
+  !*** ./resources/js/http/interceptor.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _environments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/environments */ "./resources/js/environments.js");
+/* harmony import */ var _services_authentication__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/services/authentication */ "./resources/js/services/authentication.js");
+/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! element-ui */ "./node_modules/element-ui/lib/element-ui.common.js");
+/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/utils/messages */ "./resources/js/utils/messages.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+
+var http = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
+  baseURL: _environments__WEBPACK_IMPORTED_MODULE_2__.default.domain,
+  timeout: 60000
+});
+http.interceptors.request.use( /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(config) {
+    var url, adminToken, userToken;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            url = config.url;
+
+            if (url.includes('/auth')) {
+              _context.next = 12;
+              break;
+            }
+
+            if (!url.includes('/admin')) {
+              _context.next = 7;
+              break;
+            }
+
+            _context.next = 5;
+            return (0,_services_authentication__WEBPACK_IMPORTED_MODULE_3__.getAdmin)();
+
+          case 5:
+            adminToken = _context.sent;
+
+            if (adminToken !== undefined && adminToken !== null) {
+              config.headers['Authorization'] = "Bearer ".concat(adminToken.token);
+            }
+
+          case 7:
+            if (!url.includes('/user')) {
+              _context.next = 12;
+              break;
+            }
+
+            _context.next = 10;
+            return (0,_services_authentication__WEBPACK_IMPORTED_MODULE_3__.getUser)();
+
+          case 10:
+            userToken = _context.sent;
+
+            if (userToken !== undefined && userToken !== null) {
+              config.headers['Authorization'] = "Bearer ".concat(userToken.token);
+            }
+
+          case 12:
+            console.log(config);
+            return _context.abrupt("return", config);
+
+          case 14:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+}(), function (error) {
+  console.log(error);
+  return Promise.reject(error);
+});
+http.interceptors.response.use(function (res) {
+  var method = res.config.method;
+
+  if (method === 'post') {
+    console.log(res);
+  }
+
+  return res.data;
+}, function (error) {
+  var _error$response, _error$response$data;
+
+  var response = error.response;
+  console.log(error);
+
+  if (!response) {
+    return throwError(_utils_messages__WEBPACK_IMPORTED_MODULE_5__.default.serverErrorMessage);
+  }
+
+  throwError(error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : (_error$response$data = _error$response.data) === null || _error$response$data === void 0 ? void 0 : _error$response$data.message);
+  console.error('Erro na requisição: ', error === null || error === void 0 ? void 0 : error.response);
+  return Promise.reject(error);
+});
+
+function throwError(message) {
+  return (0,element_ui__WEBPACK_IMPORTED_MODULE_4__.Message)({
+    type: 'error',
+    message: message,
+    title: 'Erro!',
+    duration: 5 * 1000
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (http);
+
+/***/ }),
+
+/***/ "./resources/js/http/modules/authentication.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/http/modules/authentication.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _http_interceptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/http/interceptor */ "./resources/js/http/interceptor.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  userLogin: function userLogin(data) {
+    return _http_interceptor__WEBPACK_IMPORTED_MODULE_0__.default.post('/auth/userLogin', data);
+  },
+  adminLogin: function adminLogin(data) {
+    return _http_interceptor__WEBPACK_IMPORTED_MODULE_0__.default.post('/auth/adminLogin', data);
+  },
+  getUser: function getUser() {
+    return _http_interceptor__WEBPACK_IMPORTED_MODULE_0__.default.get('/user');
+  },
+  getAdmin: function getAdmin() {
+    return _http_interceptor__WEBPACK_IMPORTED_MODULE_0__.default.get('/admin');
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/utils/messages.js":
+/*!****************************************!*\
+  !*** ./resources/js/utils/messages.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  serverErrorMessage: 'Erro ao conectar com o servidor, por favor tente mais tarde'
 });
 
 /***/ }),
@@ -211,7 +507,7 @@ var render = function() {
       "div",
       { staticClass: "card card-body" },
       [
-        _c("i", { staticClass: "fa fa-user" }),
+        _c("i", { staticClass: "fa fa-user auth-icon" }),
         _vm._v(" "),
         _c("h1", [_vm._v("Área do gerente")]),
         _vm._v(" "),
@@ -301,7 +597,11 @@ var render = function() {
             _vm._v(" "),
             _c("el-form-item", [
               _c("button", { staticClass: "btn btn-primary round btn-block" }, [
-                _vm._v("\n                        Entrar\n                    ")
+                _c("i", {
+                  staticClass: "fa",
+                  class: _vm.loading ? "fa-spin fa-spinner" : "fa-lock"
+                }),
+                _vm._v("\n                    Entrar\n                ")
               ])
             ])
           ],
@@ -316,6 +616,38 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./resources/js/http/modules sync recursive \\.js$":
+/*!***********************************************!*\
+  !*** ./resources/js/http/modules/ sync \.js$ ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./authentication.js": "./resources/js/http/modules/authentication.js"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/js/http/modules sync recursive \\.js$";
 
 /***/ })
 

@@ -1,7 +1,7 @@
 <template>
     <div class="auth-content">
         <div class="card card-body">
-            <i class="fa fa-user"></i>
+            <i class="fa fa-user auth-icon"></i>
             <h1>Área do usuário</h1>
 
             <el-form
@@ -38,6 +38,10 @@
 
                 <el-form-item>
                     <button class="btn btn-primary round btn-block">
+                        <i
+                            class="fa"
+                            :class="loading ? 'fa-spin fa-spinner' : 'fa-lock'"
+                        ></i>
                         Entrar
                     </button>
                 </el-form-item>
@@ -51,12 +55,17 @@
 </template>
 
 <script>
+import Nprogress from 'nprogress';
+import http from '@/http';
+import { logInUser } from '@/services/authentication';
+
 export default {
     data() {
         return {
+            loading: false,
             form: {
-                email: '',
-                password: '',
+                email: 'user@example.com',
+                password: 'password',
             },
             rules: {
                 email: [
@@ -100,9 +109,22 @@ export default {
     },
     methods: {
         submitForm() {
-            this.$refs.loginForm.validate((valid) => {
+            this.$refs.loginForm.validate(async (valid) => {
                 if (valid) {
-                    alert('submit!');
+                    Nprogress.start();
+                    this.loading = true;
+                    const { userLogin } = http.authentication;
+
+                    try {
+                        const req = await userLogin(this.form);
+                        const user = req.object;
+                        logInUser(user);
+                        this.redirect(this.$router, 'UserDashboard');
+                    } catch (error) {
+                        console.log(error);
+                    }
+                    Nprogress.done();
+                    this.loading = false;
                 } else {
                     console.log('error submit!!');
                     return false;

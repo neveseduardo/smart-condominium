@@ -1,7 +1,9 @@
 import NProgress from "nprogress";
 import {
-    isLogged
+    getUser,
+    getAdmin
 } from '@/services/authentication'
+
 let routeResolved = false;
 
 function tryInitProgress() {
@@ -10,28 +12,37 @@ function tryInitProgress() {
         if (!routeResolved) {
             NProgress.start();
         }
-    }, 100);
+    }, 200);
 }
 export default function initProgress(router) {
-    router.beforeEach((to, from, next) => {
+    router.beforeEach(async (to, from, next) => {
         tryInitProgress();
-		let usuario = isLogged();
+        let user = await getUser();
+        let admin = await getAdmin();
 
-		if (usuario === null && to.meta.auth && to.meta.role === 'admin') {
-			return next({ name: 'AdminLogin'})
-		}
+        if (admin === null && to.meta.auth && to.meta.role === 'admin') {
+            return next({
+                name: 'AdminLogin'
+            })
+        }
 
-		if (usuario === null && to.meta.auth && to.meta.role === 'user') {
-			return next({ name: 'UserLogin'})
-		}
+        if (user === null && to.meta.auth && to.meta.role === 'user') {
+            return next({
+                name: 'UserLogin'
+            })
+        }
 
-		if (usuario !== null && to.meta.role === 'admin' && to.name === 'AdminLogin') {
-			return next({ name: 'AdminDashbord' })
-		}
+        if (admin !== null && to.meta.role === 'admin' && to.name === 'AdminLogin') {
+            return next({
+                name: 'AdminDashbord'
+            })
+        }
 
-		if (usuario !== null && to.meta.role === 'user' && to.name === 'UserLogin') {
-			return next({ name: 'UserDashbord' })
-		}
+        if (user !== null && to.meta.role === 'user' && to.name === 'UserLogin') {
+            return next({
+                name: 'UserDashbord'
+            })
+        }
 
         return next()
     });
