@@ -17,15 +17,106 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
+    var _this = this;
+
     return {
-      username: '',
-      password: ''
+      form: {
+        email: '',
+        password: ''
+      },
+      rules: {
+        email: [{
+          required: true,
+          trigger: 'blur',
+          validator: function validator(rule, value, callback) {
+            if (value === '') {
+              return callback(new Error('Digite um email.'));
+            }
+
+            if (_this.validate('email', value)) {
+              return callback(new Error('Digite um e-mail válido.'));
+            }
+
+            return callback();
+          }
+        }],
+        password: [{
+          required: true,
+          trigger: 'blur',
+          validator: function validator(rule, value, callback) {
+            if (_this.validate('empty', value)) {
+              return callback(new Error('Digite uma senha.'));
+            }
+
+            if (_this.validate('password', value)) {
+              return callback(new Error('O campo senha deve conter pelo menos 6 caracteres.'));
+            }
+
+            return callback();
+          }
+        }]
+      }
     };
   },
   methods: {
-    onSubmitLogin: function onSubmitLogin() {}
+    submitForm: function submitForm() {
+      this.$refs.loginForm.validate(function (valid) {
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+    }
   }
 });
 
@@ -119,16 +210,127 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "auth-content" }, [
+    _c(
+      "div",
+      { staticClass: "card card-body" },
+      [
+        _c("i", { staticClass: "fa fa-user" }),
+        _vm._v(" "),
+        _c("h1", [_vm._v("Área do usuário")]),
+        _vm._v(" "),
+        _c(
+          "el-form",
+          {
+            ref: "loginForm",
+            staticClass: "login-form",
+            attrs: {
+              model: _vm.form,
+              rules: _vm.rules,
+              "auto-complete": "off",
+              "label-position": "top"
+            },
+            nativeOn: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submitForm($event)
+              }
+            }
+          },
+          [
+            _c(
+              "el-row",
+              { attrs: { gutter: 20 } },
+              [
+                _c(
+                  "el-col",
+                  { attrs: { span: 24 } },
+                  [
+                    _c(
+                      "el-form-item",
+                      { attrs: { label: "E-mail", prop: "email" } },
+                      [
+                        _c("el-input", {
+                          attrs: {
+                            placeholder: "E-mail",
+                            type: "text",
+                            autocomplete: "off"
+                          },
+                          model: {
+                            value: _vm.form.email,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "email", $$v)
+                            },
+                            expression: "form.email"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-col",
+                  { attrs: { span: 24 } },
+                  [
+                    _c(
+                      "el-form-item",
+                      { attrs: { label: "Senha", prop: "password" } },
+                      [
+                        _c("el-input", {
+                          attrs: {
+                            placeholder: "Senha",
+                            type: "password",
+                            autocomplete: "off"
+                          },
+                          model: {
+                            value: _vm.form.password,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "password", $$v)
+                            },
+                            expression: "form.password"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("el-form-item", [
+              _c("button", { staticClass: "btn btn-primary round btn-block" }, [
+                _vm._v("\n                    Entrar\n                ")
+              ])
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.redirect(_vm.$router, "UserForgotPassword")
+              }
+            }
+          },
+          [_vm._v("Esqueceu a senha ?")]
+        )
+      ],
+      1
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("User login")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

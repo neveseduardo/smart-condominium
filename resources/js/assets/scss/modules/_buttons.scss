@@ -14,10 +14,10 @@ a.btn {
     user-select: none;
     background-color: $default-color;
     border: 1px solid transparent;
-    padding: 11px 23px;
+    padding: 7px 20px;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: .8rem;
     line-height: 1.5;
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -32,22 +32,23 @@ button.btn.round,
 a.btn.round {
     border-radius: 30px;
 }
+
 button.circle,
 button.btn.circle,
 a.btn.circle {
     border-radius: 30px;
-	padding: 0;
-	text-align: center;
-	width: 35px;
-	height: 35px;
-	line-height: 33px;
-	margin-right: 5px;
+    padding: 0;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    line-height: 33px;
+    margin-right: 5px;
 
-	i {
-		margin: 0;
-		margin-right: 0;
-		font-size: .9rem;
-	}
+    i {
+        margin: 0;
+        margin-right: 0;
+        font-size: .9rem;
+    }
 }
 
 
@@ -283,4 +284,32 @@ button:not(:disabled):not(.disabled) {
 .btn-danger:not(:disabled):not(.disabled).active:focus,
 .show>.btn-danger.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem $danger-color-opacity;
+}
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+    .btn-lg-block {
+        width: 100% !important;
+        display: block !important;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+    .btn-md-block {
+        width: 100% !important;
+        display: block !important;
+    }
+}
+
+@media all and (min-width: 576px) and (max-width: 767px) {
+    .btn-sm-block {
+        width: 100% !important;
+        display: block !important;
+    }
+}
+
+@media all and (max-width: 575px) {
+    .btn-xs-block {
+        width: 100% !important;
+        display: block !important;
+    }
 }

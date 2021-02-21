@@ -11,9 +11,11 @@ import App from "@/views/App.vue";
 import initProgress from "@/progressbar";
 import router from '@/router';
 import store from '@/store';
+import methods from '@/utils/globalMethods'
 
 window.$ = JQuery
 
+Vue.mixin({...methods})
 Vue.use(VueRouter);
 Vue.use(ElementUI, {
     locale
