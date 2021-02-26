@@ -1,30 +1,37 @@
 <template>
     <div class="wrapper">
-        <el-container>
-            <el-header>
-                <h1>Cabeçalho</h1>
-            </el-header>
-            <el-main>
-                <home-content />
-            </el-main>
-            <el-footer>
-                <h1>Footer</h1>
-            </el-footer>
-        </el-container>
+        <side-bar type="sidebar" :sidebar-links="$sidebar.sidebarLinks">
+            <div></div>
+        </side-bar>
+
+        <div class="main-panel">
+            <top-navbar></top-navbar>
+
+            <dashboard-content @click.native="toggleSidebar">
+            </dashboard-content>
+
+            <content-footer></content-footer>
+        </div>
     </div>
 </template>
+<style lang="scss"></style>
 <script>
-import HomeHeader from './components/Header.vue';
-import HomeAside from './components/Aside.vue';
-import HomeContent from './components/Content.vue';
-import HomeFooter from './components/Footer.vue';
+import TopNavbar from './components/TopNavbar.vue';
+import ContentFooter from './components/ContentFooter.vue';
+import DashboardContent from './components/Content.vue';
 
 export default {
     components: {
-        HomeHeader,
-        HomeAside,
-        HomeContent,
-        HomeFooter,
+        TopNavbar,
+        ContentFooter,
+        DashboardContent,
+    },
+    methods: {
+        toggleSidebar() {
+            if (this.$sidebar.showSidebar) {
+                this.$sidebar.displaySidebar(false);
+            }
+        },
     },
 };
 </script>

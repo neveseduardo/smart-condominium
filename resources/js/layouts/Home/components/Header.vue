@@ -14,8 +14,8 @@
         <div>
             <a
                 title="Área do usuário"
-                @click.prevent="redirect($router, 'UserDashboard')"
-                class="btn btn-info circle"
+                @click.prevent="redirect('UserDashboard')"
+                class="btn btn-icon btn-info btn-round"
                 ><i class="fa fa-user"></i
             ></a>
         </div>

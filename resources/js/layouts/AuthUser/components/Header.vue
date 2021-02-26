@@ -4,14 +4,14 @@
             <div class="container">
                 <ul>
                     <li>
-                        <a href="#" @click.prevent="redirect($router, 'Home')"
+                        <a href="#" @click.prevent="redirect('Home')"
                             >Página inicial</a
                         >
                     </li>
                     <li>
                         <a
                             href="#"
-                            @click.prevent="redirect($router, 'AdminDashboard')"
+                            @click.prevent="redirect('AdminDashboard')"
                             >Área do gerente</a
                         >
                     </li>

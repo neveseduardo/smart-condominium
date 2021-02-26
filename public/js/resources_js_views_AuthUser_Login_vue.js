@@ -600,13 +600,17 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("el-form-item", [
-              _c("button", { staticClass: "btn btn-primary round btn-block" }, [
-                _c("i", {
-                  staticClass: "fa",
-                  class: _vm.loading ? "fa-spin fa-spinner" : "fa-lock"
-                }),
-                _vm._v("\n                    Entrar\n                ")
-              ])
+              _c(
+                "button",
+                { staticClass: "btn btn-primary btn-round btn-block" },
+                [
+                  _c("i", {
+                    staticClass: "fa",
+                    class: _vm.loading ? "fa-spin fa-spinner" : "fa-lock"
+                  }),
+                  _vm._v("\n                    Entrar\n                ")
+                ]
+              )
             ])
           ],
           1
@@ -619,7 +623,7 @@ var render = function() {
             on: {
               click: function($event) {
                 $event.preventDefault()
-                return _vm.redirect(_vm.$router, "UserForgotPassword")
+                return _vm.redirect("UserForgotPassword")
               }
             }
           },

@@ -37,7 +37,7 @@
                 </el-row>
 
                 <el-form-item>
-                    <button class="btn btn-primary round btn-block">
+                    <button class="btn btn-primary btn-round btn-block">
                         <i
                             class="fa"
                             :class="loading ? 'fa-spin fa-spinner' : 'fa-lock'"
@@ -47,7 +47,7 @@
                 </el-form-item>
             </el-form>
 
-            <a href="#" @click.prevent="redirect($router, 'UserForgotPassword')"
+            <a href="#" @click.prevent="redirect('UserForgotPassword')"
                 >Esqueceu a senha ?</a
             >
         </div>

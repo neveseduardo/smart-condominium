@@ -1,7 +1,7 @@
 export default [
 	{
         name: 'PESSOAS',
-        icon: 'nc-icon nc-zoom-split',
+        icon: 'fa fa-user',
         children: [
 
             {
