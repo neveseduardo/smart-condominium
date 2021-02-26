@@ -8,11 +8,13 @@ Route::prefix('auth')->name('auth.')->namespace('API')->group(function () {
 	Route::post('adminLogin', 'AuthController@adminLogin');
 });
 
-Route::namespace('API')->group(function () {
-	Route::group(['middleware' => 'auth:api'], function () {
-		Route::get('user', 'AuthController@getUser');
-	});
-	Route::group(['middleware' => 'auth:admin-api'], function () {
-		Route::get('admin', 'AuthController@getAdmin');
-	});
+Route::prefix('user')->namespace('API')->middleware(['auth:api'])->group(function () {
+	Route::get('/', 'AuthController@getUser');
+});
+Route::prefix('admin')->namespace('API')->middleware(['auth:admin-api'])->group(function () {
+	Route::get('/', 'AuthController@getAdmin');
+});
+
+Route::fallback(function(){
+	return response()->json(['message' => 'Rota não encontrada.'], 404);
 });

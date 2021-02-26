@@ -115,7 +115,7 @@ export default {
                         const req = await adminLogin(this.form);
                         const admin = req.object;
                         logInAdmin(admin);
-                        this.redirect(this.$router, 'AdminDashboard');
+                        this.redirect('AdminDashboard');
                     } catch (error) {
                         console.log(error);
                     }

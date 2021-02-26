@@ -15,4 +15,9 @@ export default [
 
         ]
     },
+	{
+        name: 'FUNCIONAIS',
+        icon: 'fa fa-envelope',
+        path: '/admin/funcional/registrar'
+    },
 ]

@@ -119,7 +119,7 @@ export default {
                         const req = await userLogin(this.form);
                         const user = req.object;
                         logInUser(user);
-                        this.redirect(this.$router, 'UserDashboard');
+                        this.redirect('UserDashboard');
                     } catch (error) {
                         console.log(error);
                     }

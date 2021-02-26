@@ -1,8 +1,9 @@
 <template>
-    <h1>User dashboard</h1>
+    <div class="card card-body">
+        <h2>User dashboard</h2>
+    </div>
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>

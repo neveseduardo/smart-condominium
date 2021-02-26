@@ -22,16 +22,17 @@ http.interceptors.request.use(async config => {
     let {
         url
     } = config
+    url = url.split('/')
 
-    if (!url.includes('/auth')) {
-        if (url.includes('/admin')) {
+    if (!url.includes('auth')) {
+        if (url.includes('admin')) {
             const adminToken = await getAdmin()
             if (adminToken !== undefined && adminToken !== null) {
                 config.headers['Authorization'] = `Bearer ${adminToken.token}`
             }
 
         }
-        if (url.includes('/user')) {
+        if (url.includes('user')) {
             const userToken = await getUser()
             if (userToken !== undefined && userToken !== null) {
                 config.headers['Authorization'] = `Bearer ${userToken.token}`

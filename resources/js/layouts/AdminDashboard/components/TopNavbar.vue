@@ -90,7 +90,6 @@
 import Navbar from '@/components/Navbar';
 import NavbarToggleButton from '@/components/NavbarToggleButton';
 import links from '@/sidebarLinks';
-import { outUser } from '@/services/authentication';
 
 export default {
     components: {
@@ -174,8 +173,8 @@ export default {
             this.redirect(item.link);
         },
         logout() {
-            outUser();
-            this.redirect('UserLogin')
+            logout();
+            this.$router.push('/');
         },
     },
     mounted() {
