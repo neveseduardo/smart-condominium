@@ -2,10 +2,10 @@ export default [
 	{
         name: 'Dashboard',
         icon: 'fa fa-tachometer-alt',
-        path: '/user/dashboard'
+        path: '/admin/dashboard'
     },
 	{
-        name: 'PESSOAS',
+        name: 'Admin teste',
         icon: 'fa fa-user',
         children: [
 

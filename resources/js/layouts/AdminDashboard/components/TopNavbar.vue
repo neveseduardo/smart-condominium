@@ -30,7 +30,7 @@
                         class="inline-input"
                         v-model="state1"
                         :fetch-suggestions="querySearch"
-                        placeholder="Please Input"
+                        placeholder="Pesquisar admin..."
                         @select="handleSelect"
                     >
                         <i
@@ -89,7 +89,8 @@
 <script>
 import Navbar from '@/components/Navbar';
 import NavbarToggleButton from '@/components/NavbarToggleButton';
-import links from '@/sidebarLinks';
+import adminLinks from '@/adminSidebarLinks';
+import { outAdmin } from '@/services/authentication';
 
 export default {
     components: {
@@ -141,40 +142,41 @@ export default {
         },
         createFilter(queryString) {
             return (link) => {
-                return (
-                    link.value
-                        .toLowerCase()
-                        .indexOf(queryString.toLowerCase()) === 0
-                );
+                return link.value
+                    .toLowerCase()
+                    .includes(queryString.toLowerCase());
             };
         },
         loadAll() {
-            const arr = [];
-
-            links.map((item) => {
-                if (item?.children?.length > 0) {
+            let adminArr = [];
+            this.$adminSidebar.adminSidebarLinks.map((item) => {
+                if (item?.children) {
                     item.children.map((children) => {
-                        arr.push({
-                            value: this.capitalize(children.name),
-                            link: children.path,
+                        adminArr.push({
+                            value:
+                                this.capitalize(item.name) +
+                                '/' +
+                                this.capitalize(children.name),
+                            link: item.path,
                         });
                     });
                 } else {
-                    arr.push({
+                    adminArr.push({
                         value: this.capitalize(item.name),
                         link: item.path,
                     });
                 }
             });
-            return arr;
+
+            return adminArr;
         },
         handleSelect(item) {
             this.state1 = '';
             this.redirect(item.link);
         },
         logout() {
-            logout();
-            this.$router.push('/');
+            outAdmin();
+            this.redirect('AdminLogin');
         },
     },
     mounted() {

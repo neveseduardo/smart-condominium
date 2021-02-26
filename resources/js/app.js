@@ -16,11 +16,14 @@ import router from '@/router';
 import store from '@/store';
 import methods from '@/utils/globalMethods'
 import SideBar from "@/components/SidebarPlugin";
+import AdminSidebar from "@/components/AdminSidebarPlugin";
 import sidebarLinks from "@/sidebarLinks";
+import adminSidebarLinks from "@/adminSidebarLinks";
 
 window.$ = JQuery
 Vue.mixin({...methods})
 Vue.use(SideBar, { sidebarLinks: sidebarLinks });
+Vue.use(AdminSidebar, { adminSidebarLinks: adminSidebarLinks });
 Vue.use(VueRouter);
 Vue.use(ElementUI, {
     locale

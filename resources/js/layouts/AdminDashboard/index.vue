@@ -1,8 +1,8 @@
 <template>
     <div class="wrapper">
-        <side-bar type="sidebar" :sidebar-links="$sidebar.sidebarLinks">
+        <admin-side-bar type="sidebar" backgroundColor="white" :sidebar-links="$adminSidebar.adminSidebarLinks">
             <div></div>
-        </side-bar>
+        </admin-side-bar>
 
         <div class="main-panel">
             <top-navbar></top-navbar>
@@ -33,5 +33,8 @@ export default {
             }
         },
     },
+	mounted(){
+		console.log(this.$adminSidebar)
+	}
 };
 </script>

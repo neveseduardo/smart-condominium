@@ -20,7 +20,7 @@
                 <navbar-toggle-button @click.native="toggleSidebar">
                 </navbar-toggle-button>
             </div>
-            <a href="#pablo" class="navbar-brand">Admin dashboard</a>
+            <a href="#pablo" class="navbar-brand">User dashboard</a>
         </div>
 
         <template slot="navbar-menu">
@@ -30,7 +30,7 @@
                         class="inline-input"
                         v-model="state1"
                         :fetch-suggestions="querySearch"
-                        placeholder="Please Input"
+                        placeholder="Pesquisar user..."
                         @select="handleSelect"
                     >
                         <i
@@ -137,37 +137,37 @@ export default {
             var results = queryString
                 ? links.filter(this.createFilter(queryString))
                 : links;
-            // call callback function to return suggestions
             cb(results);
         },
         createFilter(queryString) {
             return (link) => {
-                return (
-                    link.value
-                        .toLowerCase()
-                        .indexOf(queryString.toLowerCase()) === 0
-                );
+                return link.value
+                    .toLowerCase()
+                    .includes(queryString.toLowerCase());
             };
         },
         loadAll() {
-            const arr = [];
+            let userArr = [];
 
-            links.map((item) => {
-                if (item?.children?.length > 0) {
+            this.$sidebar.sidebarLinks.map((item) => {
+                if (item?.children) {
                     item.children.map((children) => {
-                        arr.push({
-                            value: this.capitalize(children.name),
-                            link: children.path,
+                        userArr.push({
+                            value:
+                                this.capitalize(item.name) +
+                                '/' +
+                                this.capitalize(children.name),
+                            link: item.path,
                         });
                     });
                 } else {
-                    arr.push({
+                    userArr.push({
                         value: this.capitalize(item.name),
                         link: item.path,
                     });
                 }
             });
-            return arr;
+            return userArr;
         },
         handleSelect(item) {
             this.state1 = '';
@@ -175,7 +175,7 @@ export default {
         },
         logout() {
             outUser();
-            this.redirect('UserLogin')
+            this.redirect('UserLogin');
         },
     },
     mounted() {
