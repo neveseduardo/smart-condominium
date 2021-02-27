@@ -2205,10 +2205,9 @@ http.interceptors.request.use( /*#__PURE__*/function () {
             }
 
           case 13:
-            console.log(config);
             return _context.abrupt("return", config);
 
-          case 15:
+          case 14:
           case "end":
             return _context.stop();
         }
@@ -2220,7 +2219,7 @@ http.interceptors.request.use( /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }(), function (error) {
-  console.log(error);
+  // console.log(error)
   return Promise.reject(error);
 });
 http.interceptors.response.use(function (res) {
@@ -2241,8 +2240,8 @@ http.interceptors.response.use(function (res) {
     return throwError(_utils_messages__WEBPACK_IMPORTED_MODULE_5__.default.serverErrorMessage);
   }
 
-  throwError(error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : (_error$response$data = _error$response.data) === null || _error$response$data === void 0 ? void 0 : _error$response$data.message);
-  console.error('Erro na requisição: ', error === null || error === void 0 ? void 0 : error.response);
+  throwError(error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : (_error$response$data = _error$response.data) === null || _error$response$data === void 0 ? void 0 : _error$response$data.message); // console.error('Erro na requisição: ', error?.response)
+
   return Promise.reject(error);
 });
 

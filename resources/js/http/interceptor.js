@@ -40,10 +40,10 @@ http.interceptors.request.use(async config => {
         }
     }
 
-    console.log(config)
+    // console.log(config)
     return config
 }, error => {
-    console.log(error)
+    // console.log(error)
     return Promise.reject(error)
 })
 
@@ -65,7 +65,7 @@ http.interceptors.response.use(res => {
         return throwError(messages.serverErrorMessage)
     }
     throwError(error?.response?.data?.message)
-    console.error('Erro na requisição: ', error?.response)
+    // console.error('Erro na requisição: ', error?.response)
     return Promise.reject(error)
 })
 
