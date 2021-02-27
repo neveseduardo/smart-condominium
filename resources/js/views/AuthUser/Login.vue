@@ -48,8 +48,12 @@
             </el-form>
 
             <div class="auth-button-group">
-                <a href="#" @click.prevent="redirect('UserForgotPassword')">Esqueceu a senha ?</a>
-                <a href="#" @click.prevent="redirect('UserRegister')">Fazer cadastro</a>
+                <a href="#" @click.prevent="redirect('UserForgotPassword')"
+                    >Esqueceu a senha ?</a
+                >
+                <a href="#" @click.prevent="redirect('UserRegister')"
+                    >Fazer cadastro</a
+                >
             </div>
         </div>
     </div>
@@ -119,8 +123,11 @@ export default {
                     try {
                         const req = await userLogin(this.form);
                         const user = req.object;
-                        logInUser(user);
-                        this.redirect('UserDashboard');
+
+                        if (user !== undefined) {
+                            logInUser(user);
+                            this.redirect('UserDashboard');
+                        }
                     } catch (error) {
                         console.log(error);
                     }

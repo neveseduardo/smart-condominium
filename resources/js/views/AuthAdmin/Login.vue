@@ -114,8 +114,10 @@ export default {
                     try {
                         const req = await adminLogin(this.form);
                         const admin = req.object;
-                        logInAdmin(admin);
-                        this.redirect('AdminDashboard');
+                        if (user !== undefined) {
+                            logInAdmin(admin);
+                            this.redirect('AdminDashboard');
+                        }
                     } catch (error) {
                         console.log(error);
                     }

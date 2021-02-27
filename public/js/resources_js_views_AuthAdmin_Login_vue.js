@@ -1967,7 +1967,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               switch (_context.prev = _context.next) {
                 case 0:
                   if (!(valid && !_this2.loading)) {
-                    _context.next = 20;
+                    _context.next = 19;
                     break;
                   }
 
@@ -1981,34 +1981,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 case 7:
                   req = _context.sent;
                   admin = req.object;
-                  (0,_services_authentication__WEBPACK_IMPORTED_MODULE_3__.logInAdmin)(admin);
 
-                  _this2.redirect('AdminDashboard');
+                  if (user !== undefined) {
+                    (0,_services_authentication__WEBPACK_IMPORTED_MODULE_3__.logInAdmin)(admin);
 
-                  _context.next = 16;
+                    _this2.redirect('AdminDashboard');
+                  }
+
+                  _context.next = 15;
                   break;
 
-                case 13:
-                  _context.prev = 13;
+                case 12:
+                  _context.prev = 12;
                   _context.t0 = _context["catch"](4);
                   console.log(_context.t0);
 
-                case 16:
+                case 15:
                   nprogress__WEBPACK_IMPORTED_MODULE_1___default().done();
                   _this2.loading = false;
-                  _context.next = 22;
+                  _context.next = 21;
                   break;
 
-                case 20:
+                case 19:
                   console.log('error submit!!');
                   return _context.abrupt("return", false);
 
-                case 22:
+                case 21:
                 case "end":
                   return _context.stop();
               }
             }
-          }, _callee, null, [[4, 13]]);
+          }, _callee, null, [[4, 12]]);
         }));
 
         return function (_x) {
