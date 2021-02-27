@@ -20,7 +20,7 @@ export const routes = [
 ]
 
 const createRouter = () => new Router({
-    //mode: 'history',
+    //mode: 'history', // não funciona com laravel nativamente
     scrollBehavior: () => ({
         y: 0
     }),

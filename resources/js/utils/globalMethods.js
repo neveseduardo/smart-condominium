@@ -3,15 +3,16 @@ import validator from '@/utils/validator'
 export default {
     methods: {
         redirect(routerName) {
-            this.$router.push({
+            let path = routerName.includes('/') ? routerName : {
                 name: routerName
-            }).catch(() => {})
+            }
+            return this.$router.push(path).catch(() => {})
         },
         validate(type, value) {
             return validator[type](value)
         },
         capitalize(string) {
-			string = string.toLowerCase()
+            string = string.toLowerCase()
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
     }

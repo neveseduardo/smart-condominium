@@ -4,25 +4,44 @@ export default [
         icon: 'fa fa-tachometer-alt',
         path: '/admin/dashboard'
     },
+
 	{
-        name: 'Admin teste',
-        icon: 'fa fa-user',
-        children: [
-
-            {
-                name: 'Pesquisar pessoas',
-                path: '/admin/pessoal/pesquisar',
-            },
-            {
-                name: 'Cadastrar pessoas',
-                path: '/admin/pessoal/registrar'
-            },
-
-        ]
+        name: 'Meu Perfil',
+        icon: 'fa fa-address-card',
+        path: '/admin/profile'
     },
 	{
-        name: 'FUNCIONAIS',
+        name: 'Usuários',
+        icon: 'fa fa-users',
+		children: [
+			{
+				name: 'Lista de usuários',
+				path: '/admin/users'
+			},
+			{
+				name: 'Novo usuário',
+				path: '/admin/users/form'
+			},
+		]
+    },
+	{
+        name: 'Meu pagamentos',
+        icon: 'fa fa-money-check-alt',
+        path: '/admin/payments'
+    },
+	{
+        name: 'Notificações',
+        icon: 'fa fa-bell',
+        path: '/admin/notifications'
+    },
+	{
+        name: 'Mensagens',
         icon: 'fa fa-envelope',
-        path: '/admin/funcional/registrar'
+        path: '/admin/messages'
+    },
+	{
+        name: 'Configurações',
+        icon: 'nc-icon nc-settings-gear-65',
+        path: '/admin/settings'
     },
 ]

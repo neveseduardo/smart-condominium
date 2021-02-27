@@ -20,7 +20,7 @@
                 <navbar-toggle-button @click.native="toggleSidebar">
                 </navbar-toggle-button>
             </div>
-            <a href="#pablo" class="navbar-brand">User dashboard</a>
+            <a href="#" @click.prevent="redirect('UserDashboard')" class="navbar-brand">Smart Condominium</a>
         </div>
 
         <template slot="navbar-menu">
@@ -58,7 +58,7 @@
                 </el-dropdown>
 
                 <li class="nav-item">
-                    <a class="nav-link btn-rotate" href="#pablo">
+                    <a @click.prevent="redirect('UserSettings')" class="nav-link btn-rotate" href="#">
                         <i class="nc-icon nc-settings-gear-65"></i>
                         <p>
                             <span class="d-lg-none d-md-block"
@@ -75,7 +75,7 @@
                     </div>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>
-                            <a class="d-block">Meu prefil</a>
+                            <a href="#" @click.prevent="redirect('UserProfile')" class="d-block">Meu prefil</a>
                         </el-dropdown-item>
                         <el-dropdown-item>
                             <a class="d-block" @click.prevent="logout">Sair</a>
@@ -157,7 +157,7 @@ export default {
                                 this.capitalize(item.name) +
                                 '/' +
                                 this.capitalize(children.name),
-                            link: item.path,
+                            link: children.path,
                         });
                     });
                 } else {
@@ -170,8 +170,8 @@ export default {
             return userArr;
         },
         handleSelect(item) {
-            this.state1 = '';
-            this.redirect(item.link);
+            this.state1 = ''
+			this.redirect(item.link)
         },
         logout() {
             outUser();

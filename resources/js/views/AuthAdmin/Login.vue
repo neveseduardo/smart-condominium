@@ -106,7 +106,7 @@ export default {
     methods: {
         submitForm() {
             this.$refs.loginForm.validate(async (valid) => {
-                if (valid) {
+                if (valid && !this.loading) {
                     Nprogress.start();
                     this.loading = true;
                     const { adminLogin } = http.authentication;

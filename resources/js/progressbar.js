@@ -40,7 +40,7 @@ export default function initProgress(router) {
 
         if (user !== null && to.meta.role === 'user' && to.name === 'UserLogin') {
             return next({
-                name: 'UserDashbord'
+                name: 'UserDashboard'
             })
         }
 

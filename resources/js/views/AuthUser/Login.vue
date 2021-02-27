@@ -2,7 +2,7 @@
     <div class="auth-content">
         <div class="card card-body">
             <i class="fa fa-user auth-icon"></i>
-            <h1>Área do usuário</h1>
+            <h1>Login do usuário</h1>
 
             <el-form
                 ref="loginForm"
@@ -47,9 +47,10 @@
                 </el-form-item>
             </el-form>
 
-            <a href="#" @click.prevent="redirect('UserForgotPassword')"
-                >Esqueceu a senha ?</a
-            >
+            <div class="auth-button-group">
+                <a href="#" @click.prevent="redirect('UserForgotPassword')">Esqueceu a senha ?</a>
+                <a href="#" @click.prevent="redirect('UserRegister')">Fazer cadastro</a>
+            </div>
         </div>
     </div>
 </template>
@@ -110,7 +111,7 @@ export default {
     methods: {
         submitForm() {
             this.$refs.loginForm.validate(async (valid) => {
-                if (valid) {
+                if (valid && !this.loading) {
                     Nprogress.start();
                     this.loading = true;
                     const { userLogin } = http.authentication;

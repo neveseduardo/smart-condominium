@@ -3,6 +3,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import ElementUI from 'element-ui';
 import JQuery from 'jquery'
+import VueTheMask from 'vue-the-mask'
 // styles and configs
 import 'element-ui/lib/theme-chalk/index.css'
 import 'bootstrap'
@@ -15,13 +16,15 @@ import initProgress from "@/progressbar";
 import router from '@/router';
 import store from '@/store';
 import methods from '@/utils/globalMethods'
+// sidebar plugin
 import SideBar from "@/components/SidebarPlugin";
 import AdminSidebar from "@/components/AdminSidebarPlugin";
 import sidebarLinks from "@/sidebarLinks";
 import adminSidebarLinks from "@/adminSidebarLinks";
 
 window.$ = JQuery
-Vue.mixin({...methods})
+Vue.mixin(methods)
+Vue.use(VueTheMask)
 Vue.use(SideBar, { sidebarLinks: sidebarLinks });
 Vue.use(AdminSidebar, { adminSidebarLinks: adminSidebarLinks });
 Vue.use(VueRouter);

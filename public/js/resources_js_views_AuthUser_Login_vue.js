@@ -1912,6 +1912,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -1970,7 +1971,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  if (!valid) {
+                  if (!(valid && !_this2.loading)) {
                     _context.next = 20;
                     break;
                   }
@@ -2347,7 +2348,7 @@ var render = function() {
       [
         _c("i", { staticClass: "fa fa-user auth-icon" }),
         _vm._v(" "),
-        _c("h1", [_vm._v("Área do usuário")]),
+        _c("h1", [_vm._v("Login do usuário")]),
         _vm._v(" "),
         _c(
           "el-form",
@@ -2450,19 +2451,35 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            attrs: { href: "#" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.redirect("UserForgotPassword")
+        _c("div", { staticClass: "auth-button-group" }, [
+          _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.redirect("UserForgotPassword")
+                }
               }
-            }
-          },
-          [_vm._v("Esqueceu a senha ?")]
-        )
+            },
+            [_vm._v("Esqueceu a senha ?")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.redirect("UserRegister")
+                }
+              }
+            },
+            [_vm._v("Fazer cadastro")]
+          )
+        ])
       ],
       1
     )

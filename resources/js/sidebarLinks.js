@@ -5,24 +5,28 @@ export default [
         path: '/user/dashboard'
     },
 	{
-        name: 'PESSOAS',
-        icon: 'fa fa-user',
-        children: [
-
-            {
-                name: 'Pesquisar pessoas',
-                path: '/admin/pessoal/pesquisar',
-            },
-            {
-                name: 'Cadastrar pessoas',
-                path: '/admin/pessoal/registrar'
-            },
-
-        ]
+        name: 'Meu Perfil',
+        icon: 'fa fa-address-card',
+        path: '/user/profile'
     },
 	{
-        name: 'FUNCIONAIS',
+        name: 'Meu pagamentos',
+        icon: 'fa fa-money-check-alt',
+        path: '/user/payments'
+    },
+	{
+        name: 'Notificações',
+        icon: 'fa fa-bell',
+        path: '/user/notifications'
+    },
+	{
+        name: 'Mensagens',
         icon: 'fa fa-envelope',
-        path: '/admin/funcional/registrar'
+        path: '/user/messages'
+    },
+	{
+        name: 'Configurações',
+        icon: 'nc-icon nc-settings-gear-65',
+        path: '/user/settings'
     },
 ]

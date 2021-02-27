@@ -1966,7 +1966,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  if (!valid) {
+                  if (!(valid && !_this2.loading)) {
                     _context.next = 20;
                     break;
                   }
