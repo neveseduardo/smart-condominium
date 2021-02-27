@@ -1,8 +1,5 @@
-let domain = 'https://smartcondominiumn.herokuapp.com/api'
-
-if (process.env.NODE_ENV === 'production') {
-    domain = 'https://smartcondominiumn.herokuapp.com/api'
-}
+// let domain = 'http://localhost:8000/api'
+let domain = 'https://smartcondominium.herokuapp.com/api'
 
 export default {
     domain: domain,
