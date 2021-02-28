@@ -2033,25 +2033,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/environments.js":
-/*!**************************************!*\
-  !*** ./resources/js/environments.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-// let domain = 'http://localhost:8000/api'
-var domain = 'https://smartcondominium.herokuapp.com/api';
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  domain: domain
-});
-
-/***/ }),
-
 /***/ "./resources/js/http/index.js":
 /*!************************************!*\
   !*** ./resources/js/http/index.js ***!
@@ -2090,11 +2071,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _environments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/environments */ "./resources/js/environments.js");
-/* harmony import */ var _services_authentication__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/services/authentication */ "./resources/js/services/authentication.js");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! element-ui */ "./node_modules/element-ui/lib/element-ui.common.js");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _utils_messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/utils/messages */ "./resources/js/utils/messages.js");
+/* harmony import */ var _services_authentication__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/services/authentication */ "./resources/js/services/authentication.js");
+/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! element-ui */ "./node_modules/element-ui/lib/element-ui.common.js");
+/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_messages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/utils/messages */ "./resources/js/utils/messages.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2105,9 +2085,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
 var http = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
-  baseURL: _environments__WEBPACK_IMPORTED_MODULE_2__.default.domain,
+  baseURL: "".concat("http://localhost:8000", "/api"),
   timeout: 60000
 });
 http.interceptors.request.use( /*#__PURE__*/function () {
@@ -2117,46 +2096,49 @@ http.interceptors.request.use( /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            url = config.url;
-            url = url.split('/');
+            url = config.url.split('/');
 
             if (url.includes('auth')) {
-              _context.next = 13;
+              _context.next = 12;
               break;
             }
 
             if (!url.includes('admin')) {
-              _context.next = 8;
+              _context.next = 7;
               break;
             }
 
-            _context.next = 6;
-            return (0,_services_authentication__WEBPACK_IMPORTED_MODULE_3__.getAdmin)();
+            _context.next = 5;
+            return (0,_services_authentication__WEBPACK_IMPORTED_MODULE_2__.getAdmin)();
 
-          case 6:
+          case 5:
             adminToken = _context.sent;
 
             if (adminToken !== undefined && adminToken !== null) {
               config.headers['Authorization'] = "Bearer ".concat(adminToken.token);
             }
 
-          case 8:
+          case 7:
             if (!url.includes('user')) {
-              _context.next = 13;
+              _context.next = 12;
               break;
             }
 
-            _context.next = 11;
-            return (0,_services_authentication__WEBPACK_IMPORTED_MODULE_3__.getUser)();
+            _context.next = 10;
+            return (0,_services_authentication__WEBPACK_IMPORTED_MODULE_2__.getUser)();
 
-          case 11:
+          case 10:
             userToken = _context.sent;
 
             if (userToken !== undefined && userToken !== null) {
               config.headers['Authorization'] = "Bearer ".concat(userToken.token);
             }
 
-          case 13:
+          case 12:
+            if (true) {
+              console.log(config);
+            }
+
             return _context.abrupt("return", config);
 
           case 14:
@@ -2171,13 +2153,14 @@ http.interceptors.request.use( /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }(), function (error) {
-  // console.log(error)
+  if (true) {
+    console.error(error);
+  }
+
   return Promise.reject(error);
 });
 http.interceptors.response.use(function (res) {
-  var method = res.config.method;
-
-  if (method === 'post') {
+  if (res.config.method === 'post' && "local" === 'local') {
     console.log(res);
   }
 
@@ -2185,20 +2168,26 @@ http.interceptors.response.use(function (res) {
 }, function (error) {
   var _error$response, _error$response$data;
 
-  var response = error.response;
-  console.log(error);
-
-  if (!response) {
-    return throwError(_utils_messages__WEBPACK_IMPORTED_MODULE_5__.default.serverErrorMessage);
+  if (true) {
+    console.error(error);
   }
 
-  throwError(error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : (_error$response$data = _error$response.data) === null || _error$response$data === void 0 ? void 0 : _error$response$data.message); // console.error('Erro na requisição: ', error?.response)
+  if (error.response === undefined) {
+    return throwError(_utils_messages__WEBPACK_IMPORTED_MODULE_4__.default.serverErrorMessage);
+  }
+
+  throwError(error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : (_error$response$data = _error$response.data) === null || _error$response$data === void 0 ? void 0 : _error$response$data.message);
+
+  if (true) {
+    console.error('Erro na requisição: ', error === null || error === void 0 ? void 0 : error.response);
+  }
 
   return Promise.reject(error);
 });
 
 function throwError(message) {
-  return (0,element_ui__WEBPACK_IMPORTED_MODULE_4__.Message)({
+  if (message === undefined) return;
+  return (0,element_ui__WEBPACK_IMPORTED_MODULE_3__.Message)({
     type: 'error',
     message: message,
     title: 'Erro!',
