@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
 
-    <title>Smart Condominium</title>
+    <title>{{ env('APP_NAME') }}</title>
 
-    <meta name="description" content="Um template construído para ecommerces em Laravel e Vuejs." />
+    <meta name="description" content="{{ env('APP_DESCRIPTION') }}" />
     <meta name="author" content="Eduardo Neves" />
     <meta name="robots" content="index,nofollow" />
 

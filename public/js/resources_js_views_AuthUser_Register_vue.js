@@ -2134,7 +2134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var http = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
-  baseURL: "".concat("http://localhost:8000", "/api"),
+  baseURL:  true ? "".concat("http://localhost:8000", "/api") : 0,
   timeout: 60000
 });
 http.interceptors.request.use( /*#__PURE__*/function () {

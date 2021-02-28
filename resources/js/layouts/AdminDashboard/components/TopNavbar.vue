@@ -20,7 +20,7 @@
                 <navbar-toggle-button @click.native="toggleSidebar">
                 </navbar-toggle-button>
             </div>
-            <a href="#" @click.prevent="redirect('AdminDashboard')"  class="navbar-brand">Admin dashboard</a>
+            <a href="#" @click.prevent="redirect('AdminDashboard')"  class="navbar-brand">{{ app_name }}</a>
         </div>
 
         <template slot="navbar-menu">
@@ -99,6 +99,7 @@ export default {
     },
     data() {
         return {
+			app_name: process.env.MIX_APP_NAME,
             search: '',
             activeNotifications: false,
             showNavbar: false,

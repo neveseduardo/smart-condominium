@@ -7,8 +7,8 @@
                 class="fa"
                 :class="active ? 'fa-times' : 'fa-bars'"
             ></i>
-            <span class="screen-large">SMART CONDOMINIUM</span>
-            <span class="screen-small">SMART COND.</span>
+            <span class="screen-large">{{ process.env.MIX_APP_NAME }}</span>
+            <span class="screen-small">{{ `${process.env.MIX_APP_NAME.slice(0,10)}.` }}</span>
         </h1>
 
         <div>

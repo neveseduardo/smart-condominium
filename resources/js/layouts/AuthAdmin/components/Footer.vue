@@ -2,7 +2,7 @@
     <footer class="auth-footer">
         <div class="container">
             <p>
-                Smart condominium © {{ new Date().getFullYear() }} - Direitos
+                {{ app_name }} © {{ new Date().getFullYear() }} - Direitos
                 autorais reservados.
             </p>
         </div>
@@ -12,5 +12,10 @@
 <script>
 export default {
     name: 'Footer',
+    data() {
+        return {
+            app_name: process.env.MIX_APP_NAME,
+        };
+    },
 };
 </script>

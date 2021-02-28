@@ -9,7 +9,7 @@ import {
 import messages from '@/utils/messages'
 
 const http = axios.create({
-    baseURL: `${process.env.MIX_APP_URL}/api`,
+    baseURL: process.env.MIX_APP_ENV === 'local' ? `${process.env.MIX_APP_URL}/api` : `${process.env.MIX_PROD_APP_URL}/api`,
     timeout: 60000
 })
 
