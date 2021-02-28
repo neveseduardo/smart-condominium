@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('APP_ENV', 'production') === 'production' ? env('DB_CONNECTION', 'mysql') : env('P_DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
