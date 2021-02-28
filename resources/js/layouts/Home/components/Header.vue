@@ -1,35 +1,40 @@
 <template>
     <header class="home-header">
-        <h1>
-            <i
-                title="Menu"
-                @click="toggle"
-                class="fa"
-                :class="active ? 'fa-times' : 'fa-bars'"
-            ></i>
-            <span class="screen-large">{{ app_name }}</span>
-            <span class="screen-small">{{ `${app_name.slice(0, 10)}.` }}</span>
-        </h1>
+        <div class="container">
+            <h1>
+                <button
+                    title="MENU"
+                    @click.prevent="toggle"
+                    class="btn btn-icon btn-round btn-primary"
+                >
+                    <i class="fa" :class="active ? 'fa-times' : 'fa-bars'"></i>
+                </button>
+                <span class="screen-large">{{ app_name }}</span>
+                <span class="screen-small">{{
+                    `${app_name.slice(0, 10)}.`
+                }}</span>
+            </h1>
 
-        <div>
-            <a
-                title="Área do usuário"
-                @click.prevent="redirect('UserDashboard')"
-                class="btn btn-icon btn-info btn-round"
-                ><i class="fa fa-user"></i
-            ></a>
+            <div>
+                <a
+                    title="Área do usuário"
+                    @click.prevent="redirect('UserDashboard')"
+                    class="btn btn-icon btn-primary btn-round"
+                    ><i class="fa fa-user"></i
+                ></a>
+            </div>
+
+            <transition name="dropdown-content">
+                <nav v-if="active" v-on-clickaway="away">
+                    <ul>
+                        <li><a @click.prevent="scrollToElement('.home-content')" href="#">Home</a></li>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </nav>
+            </transition>
         </div>
-
-        <transition name="dropdown-content">
-            <nav v-if="active" v-on-clickaway="away">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Serviços</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </nav>
-        </transition>
     </header>
 </template>
 

@@ -36,6 +36,7 @@ input:focus {
 	background-color: $danger-color-opacity !important;
 }
 .el-form-item.is-error .el-input__inner:focus,
+.el-form-item.is-error .el-textarea__inner:focus,
 .is-invalid textarea:focus,
 .is-invalid input:focus{
 	border-color: $danger-color-lighten;

@@ -1,9 +1,11 @@
 <template>
     <footer class="home-footer">
-        <p>
-            {{ app_name }} © {{ new Date().getFullYear() }} - Direitos autorais
-            reservados.
-        </p>
+        <div class="container">
+            <p>
+                {{ app_name }} © {{ new Date().getFullYear() }} - Direitos
+                autorais reservados.
+            </p>
+        </div>
     </footer>
 </template>
 
