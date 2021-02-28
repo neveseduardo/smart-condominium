@@ -7,8 +7,8 @@
                 class="fa"
                 :class="active ? 'fa-times' : 'fa-bars'"
             ></i>
-            <span class="screen-large">{{ process.env.MIX_APP_NAME }}</span>
-            <span class="screen-small">{{ `${process.env.MIX_APP_NAME.slice(0,10)}.` }}</span>
+            <span class="screen-large">{{ app_name }}</span>
+            <span class="screen-small">{{ `${app_name.slice(0, 10)}.` }}</span>
         </h1>
 
         <div>
@@ -46,6 +46,7 @@ export default {
     },
     data() {
         return {
+            app_name: process.env.MIX_APP_NAME,
             showNavbar: false,
         };
     },
