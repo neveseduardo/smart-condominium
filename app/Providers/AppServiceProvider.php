@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		if (config('app.env') === 'production') {
+			config()->set('database.default', 'pgsql');
             \URL::forceScheme('https');
         }
 		Schema::defaultStringLength(191);
