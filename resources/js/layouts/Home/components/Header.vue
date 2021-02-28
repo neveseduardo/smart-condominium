@@ -27,10 +27,11 @@
             <transition name="dropdown-content">
                 <nav v-if="active" v-on-clickaway="away">
                     <ul>
-                        <li><a @click.prevent="scrollToElement('.home-content')" href="#">Home</a></li>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Serviços</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a @click.prevent="scrollToElement('.home-content'); toggle()" href="#">Home</a></li>
+                        <li><a @click.prevent="scrollToElement('.home-about'); toggle()" href="#">Sobre</a></li>
+                        <li><a @click.prevent="scrollToElement('.home-services'); toggle()" href="#">Serviços</a></li>
+                        <li><a @click.prevent="scrollToElement('.home-pricing'); toggle()" href="#">Planos</a></li>
+                        <li><a @click.prevent="scrollToElement('.home-contact'); toggle()" href="#">Contato</a></li>
                     </ul>
                 </nav>
             </transition>

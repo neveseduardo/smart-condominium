@@ -234,7 +234,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -250,6 +249,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         title: 'Pro',
         pricing: 'R$ 99',
         color: 'info'
+      }],
+      services: [{
+        title: 'Tipo de serviço 1',
+        icon: 'fa fa-user'
+      }, {
+        title: 'Tipo de serviço 2',
+        icon: 'fa fa-envelope'
+      }, {
+        title: 'Tipo de serviço 3',
+        icon: 'fa fa-chart-line'
+      }, {
+        title: 'Tipo de serviço 4',
+        icon: 'fa fa-city'
+      }, {
+        title: 'Tipo de serviço 5',
+        icon: 'fa fa-clock'
+      }, {
+        title: 'Tipo de serviço 6',
+        icon: 'fa fa-cogs'
+      }, {
+        title: 'Tipo de serviço 7',
+        icon: 'fa fa-file-invoice-dollar'
+      }, {
+        title: 'Tipo de serviço 8',
+        icon: 'fa fa-hands'
       }],
       form: {
         name: '',
@@ -492,7 +516,41 @@ var render = function() {
     _vm._v(" "),
     _vm._m(1),
     _vm._v(" "),
-    _vm._m(2),
+    _c(
+      "div",
+      {
+        staticClass: "home-services d-flex align-items-center",
+        attrs: { id: "home-services" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.services, function(item, index) {
+              return _c(
+                "div",
+                { key: index, staticClass: "col col-12 col-md-3" },
+                [
+                  _c("span", [_c("i", { class: item.icon })]),
+                  _vm._v(" "),
+                  _c("h5", [_vm._v(_vm._s(item.title))]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "\n                        Lorem ipsum dolor sit amet consectetur adipisicing\n                        elit. Rerum, facilis?\n                    "
+                    )
+                  ])
+                ]
+              )
+            }),
+            0
+          )
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "home-pricing d-flex align-items-center" }, [
       _c("div", { staticClass: "container" }, [
@@ -744,7 +802,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "col-container" }, [
                 _c("h1", [
                   _vm._v(
-                    "\n                            Temos acompenhado o mercado e as tecnologias de\n                            gerenciamento a anos.\n                        "
+                    "\n                            Temos acompenhado o mercado e as tecnologias de\n                            gerenciamento à anos.\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -774,48 +832,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "home-system d-flex align-items-center",
-        attrs: { id: "home-system" }
-      },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col col-12 col-md-6" }, [
-              _c("div", { staticClass: "col-container" }, [
-                _c("h1", [
-                  _vm._v(
-                    "\n                            Um sistema criado para trazer facilidade e\n                            automação.\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                            Lorem ipsum dolor sit amet consectetur\n                            adipisicing elit. Explicabo ea, placeat in hic\n                            porro est, asperiores amet voluptate vel fugiat\n                            ipsum adipisci velit consectetur dicta, nulla\n                            fugit! Numquam, unde dolor.\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-round btn-default btn-large" },
-                  [
-                    _vm._v(
-                      "\n                            Nossos planos\n                        "
-                    )
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col col-12 col-md-6" }, [
-              _c("img", { attrs: { src: "/img/sistema.png" } })
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "section-title" }, [
+      _c("h1", [_vm._v("Nossos serviços")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n                    Lorem ipsum dolor sit, amet consectetur adipisicing\n                    elit. Nesciunt dolores reiciendis distinctio fugiat\n                    repudiandae hic nemo voluptatum quisquam unde autem.\n                "
+        )
+      ])
+    ])
   },
   function() {
     var _vm = this

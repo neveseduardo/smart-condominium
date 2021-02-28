@@ -41,7 +41,7 @@
                         <div class="col-container">
                             <h1>
                                 Temos acompenhado o mercado e as tecnologias de
-                                gerenciamento a anos.
+                                gerenciamento à anos.
                             </h1>
                             <p>
                                 Nos colocando nos lugar do cliente para entender
@@ -57,30 +57,29 @@
             </div>
         </div>
 
-        <div id="home-system" class="home-system d-flex align-items-center">
+        <div id="home-services" class="home-services d-flex align-items-center">
             <div class="container">
-                <div class="row">
-                    <div class="col col-12 col-md-6">
-                        <div class="col-container">
-                            <h1>
-                                Um sistema criado para trazer facilidade e
-                                automação.
-                            </h1>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Explicabo ea, placeat in hic
-                                porro est, asperiores amet voluptate vel fugiat
-                                ipsum adipisci velit consectetur dicta, nulla
-                                fugit! Numquam, unde dolor.
-                            </p>
-                            <button class="btn btn-round btn-default btn-large">
-                                Nossos planos
-                            </button>
-                        </div>
-                    </div>
+                <div class="section-title">
+                    <h1>Nossos serviços</h1>
 
-                    <div class="col col-12 col-md-6">
-                        <img src="/img/sistema.png" />
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Nesciunt dolores reiciendis distinctio fugiat
+                        repudiandae hic nemo voluptatum quisquam unde autem.
+                    </p>
+                </div>
+                <div class="row">
+                    <div
+                        v-for="(item, index) in services"
+                        :key="index"
+                        class="col col-12 col-md-3"
+                    >
+                        <span><i :class="item.icon"></i></span>
+                        <h5>{{ item.title }}</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Rerum, facilis?
+                        </p>
                     </div>
                 </div>
             </div>
@@ -222,6 +221,19 @@ export default {
                 { title: 'Basic', pricing: 'R$ 29', color: 'success' },
                 { title: 'Standard', pricing: 'R$ 59', color: 'danger' },
                 { title: 'Pro', pricing: 'R$ 99', color: 'info' },
+            ],
+            services: [
+                { title: 'Tipo de serviço 1', icon: 'fa fa-user' },
+                { title: 'Tipo de serviço 2', icon: 'fa fa-envelope' },
+                { title: 'Tipo de serviço 3', icon: 'fa fa-chart-line' },
+                { title: 'Tipo de serviço 4', icon: 'fa fa-city' },
+                { title: 'Tipo de serviço 5', icon: 'fa fa-clock' },
+                { title: 'Tipo de serviço 6', icon: 'fa fa-cogs' },
+                {
+                    title: 'Tipo de serviço 7',
+                    icon: 'fa fa-file-invoice-dollar',
+                },
+                { title: 'Tipo de serviço 8', icon: 'fa fa-hands' },
             ],
             form: {
                 name: '',

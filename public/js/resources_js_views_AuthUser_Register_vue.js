@@ -2134,7 +2134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var http = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
-  baseURL:  true ? "".concat("http://localhost:8000", "/api") : 0,
+  baseURL:  false ? 0 : "".concat("https://smartcondominium.herokuapp.com", "/api"),
   timeout: 60000
 });
 http.interceptors.request.use( /*#__PURE__*/function () {
@@ -2183,9 +2183,7 @@ http.interceptors.request.use( /*#__PURE__*/function () {
             }
 
           case 12:
-            if (true) {
-              console.log(config);
-            }
+            if (false) {}
 
             return _context.abrupt("return", config);
 
@@ -2201,14 +2199,12 @@ http.interceptors.request.use( /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }(), function (error) {
-  if (true) {
-    console.error(error);
-  }
+  if (false) {}
 
   return Promise.reject(error);
 });
 http.interceptors.response.use(function (res) {
-  if (res.config.method === 'post' && "local" === 'local') {
+  if (res.config.method === 'post' && "production" === 'local') {
     console.log(res);
   }
 
@@ -2216,9 +2212,7 @@ http.interceptors.response.use(function (res) {
 }, function (error) {
   var _error$response, _error$response$data;
 
-  if (true) {
-    console.error(error);
-  }
+  if (false) {}
 
   if (error.response === undefined) {
     return throwError(_utils_messages__WEBPACK_IMPORTED_MODULE_4__.default.serverErrorMessage);
@@ -2226,9 +2220,7 @@ http.interceptors.response.use(function (res) {
 
   throwError(error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : (_error$response$data = _error$response.data) === null || _error$response$data === void 0 ? void 0 : _error$response$data.message);
 
-  if (true) {
-    console.error('Erro na requisição: ', error === null || error === void 0 ? void 0 : error.response);
-  }
+  if (false) {}
 
   return Promise.reject(error);
 });
